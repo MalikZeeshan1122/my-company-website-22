@@ -44,10 +44,16 @@ export const Navbar = () => {
               About
             </Link>
             
-            <a href="#contact" className="text-foreground/80 hover:text-foreground transition-colors">
+            <a href="#contact" className="text-foreground/80 hover:text-foreground transition-colors" onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            }}>
               Contact
             </a>
-            <Button className="bg-primary hover:bg-primary/90">
+            <Button className="bg-primary hover:bg-primary/90" onClick={(e) => {
+              e.preventDefault();
+              document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+            }}>
               Get Started
             </Button>
           </div>
@@ -171,11 +177,23 @@ export const Navbar = () => {
             <a
               href="#contact"
               className="block text-foreground/80 hover:text-foreground transition-colors"
-              onClick={() => setIsMenuOpen(false)}
+              onClick={(e) => {
+                e.preventDefault();
+                setIsMenuOpen(false);
+                setTimeout(() => {
+                  document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+                }, 100);
+              }}
             >
               Contact
             </a>
-            <Button className="w-full bg-primary hover:bg-primary/90">
+            <Button className="w-full bg-primary hover:bg-primary/90" onClick={(e) => {
+              e.preventDefault();
+              setIsMenuOpen(false);
+              setTimeout(() => {
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }, 100);
+            }}>
               Get Started
             </Button>
           </div>

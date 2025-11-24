@@ -1,3 +1,5 @@
+import { Facebook, Twitter, Linkedin, Instagram, Mail } from "lucide-react";
+
 export const Footer = () => {
   return (
     <footer className="border-t border-border bg-background">
@@ -5,9 +7,56 @@ export const Footer = () => {
         <div className="grid md:grid-cols-5 gap-8 mb-8">
           <div>
             <h3 className="font-bold text-xl mb-4 text-gradient">Agency</h3>
-            <p className="text-muted-foreground">
+            <p className="text-muted-foreground mb-4">
               Building digital solutions that drive real business results.
             </p>
+            
+            {/* Social Media Links */}
+            <div className="flex gap-3">
+              <a 
+                href="https://facebook.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full bg-muted hover:bg-primary/10 flex items-center justify-center transition-colors group"
+                aria-label="Facebook"
+              >
+                <Facebook className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+              </a>
+              <a 
+                href="https://twitter.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full bg-muted hover:bg-primary/10 flex items-center justify-center transition-colors group"
+                aria-label="Twitter"
+              >
+                <Twitter className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+              </a>
+              <a 
+                href="https://linkedin.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full bg-muted hover:bg-primary/10 flex items-center justify-center transition-colors group"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+              </a>
+              <a 
+                href="https://instagram.com" 
+                target="_blank" 
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full bg-muted hover:bg-primary/10 flex items-center justify-center transition-colors group"
+                aria-label="Instagram"
+              >
+                <Instagram className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+              </a>
+              <a 
+                href="mailto:contact@agency.com"
+                className="h-10 w-10 rounded-full bg-muted hover:bg-primary/10 flex items-center justify-center transition-colors group"
+                aria-label="Email"
+              >
+                <Mail className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+              </a>
+            </div>
           </div>
           <div>
             <h4 className="font-semibold mb-4">Services</h4>

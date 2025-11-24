@@ -67,7 +67,7 @@ export const Services = () => {
                 <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-300">
                   {service.title}
                 </h3>
-                <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                <p className="text-base text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
                   {service.description}
                 </p>
               </div>

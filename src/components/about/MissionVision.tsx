@@ -18,7 +18,7 @@ export const MissionVision = () => {
               <Target className="h-6 w-6 text-primary" />
             </div>
             <h3 className="text-2xl font-bold mb-4">Our Mission</h3>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-base">
               To revolutionize the way businesses approach software development by making tailor-made, easy to use, scalable software through the use of no-code tools.
             </p>
           </Card>
@@ -28,7 +28,7 @@ export const MissionVision = () => {
               <Eye className="h-6 w-6 text-primary" />
             </div>
             <h3 className="text-2xl font-bold mb-4">Our Vision</h3>
-            <p className="text-muted-foreground text-lg">
+            <p className="text-muted-foreground text-base">
               To empower businesses to take control of their own digital transformation by providing them with the tools and resources they need to succeed.
             </p>
           </Card>

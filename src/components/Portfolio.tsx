@@ -3,6 +3,7 @@ import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useTiltEffect } from "@/hooks/useTiltEffect";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
@@ -71,6 +72,42 @@ const projects = [
   },
 ];
 
+const ProjectCard = ({ project, index }: { project: any; index: number }) => {
+  const tiltRef = useTiltEffect(8);
+
+  return (
+    <Card
+      ref={tiltRef}
+      className="overflow-hidden hover-lift hover:shadow-xl transition-all duration-300 group cursor-pointer animate-fade-in"
+      style={{ 
+        animationDelay: `${index * 100}ms`,
+        transformStyle: 'preserve-3d'
+      }}
+    >
+      <div className="relative overflow-hidden aspect-[4/3]">
+        <img
+          src={project.image}
+          alt={project.title}
+          className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+      </div>
+      <div className="p-6">
+        <Badge className="mb-3">{project.category}</Badge>
+        <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
+        <p className="text-base text-muted-foreground mb-4">{project.description}</p>
+        <div className="flex flex-wrap gap-2">
+          {project.tags.map((tag: string, tagIndex: number) => (
+            <Badge key={tagIndex} variant="outline">
+              {tag}
+            </Badge>
+          ))}
+        </div>
+      </div>
+    </Card>
+  );
+};
+
 export const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState<string>("All");
   const [currentPage, setCurrentPage] = useState(1);
@@ -104,10 +141,14 @@ export const Portfolio = () => {
   }, [currentPage]);
 
   return (
-    <section id="work" className="py-24" ref={sectionRef}>
+    <section id="work" className="py-24 relative overflow-hidden" ref={sectionRef}>
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-bl from-background via-primary/5 to-background animate-gradient"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_50%,hsl(var(--primary)/0.1),transparent_50%)] animate-pulse"></div>
+      
       <div 
         ref={revealRef}
-        className={`container mx-auto px-4 transition-all duration-1000 ${
+        className={`container mx-auto px-4 transition-all duration-1000 relative z-10 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
@@ -153,32 +194,7 @@ export const Portfolio = () => {
 
         <div className="grid md:grid-cols-2 gap-8">
           {displayedProjects.map((project, index) => (
-            <Card
-              key={`${activeFilter}-${index}`}
-              className="overflow-hidden hover-lift hover:shadow-xl transition-all duration-300 group cursor-pointer animate-fade-in"
-              style={{ animationDelay: `${index * 100}ms` }}
-            >
-              <div className="relative overflow-hidden aspect-[4/3]">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-background/90 via-background/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-              </div>
-              <div className="p-6">
-                <Badge className="mb-3">{project.category}</Badge>
-                <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-base text-muted-foreground mb-4">{project.description}</p>
-                <div className="flex flex-wrap gap-2">
-                  {project.tags.map((tag, tagIndex) => (
-                    <Badge key={tagIndex} variant="outline">
-                      {tag}
-                    </Badge>
-                  ))}
-                </div>
-              </div>
-            </Card>
+            <ProjectCard key={`${activeFilter}-${index}`} project={project} index={index} />
           ))}
         </div>
 

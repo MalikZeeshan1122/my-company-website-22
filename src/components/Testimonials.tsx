@@ -31,10 +31,14 @@ export const Testimonials = () => {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section className="py-24 bg-muted/30">
+    <section className="py-24 bg-muted/30 relative overflow-hidden">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-tr from-primary/5 via-background to-primary/10 animate-gradient"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_70%_30%,hsl(var(--primary)/0.1),transparent_50%)] animate-pulse"></div>
+      
       <div 
         ref={ref}
-        className={`container mx-auto px-4 transition-all duration-1000 ${
+        className={`container mx-auto px-4 transition-all duration-1000 relative z-10 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >

@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { BackToTop } from "@/components/BackToTop";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { CustomCursor } from "@/components/CustomCursor";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import CaseStudies from "./pages/CaseStudies";
@@ -27,6 +28,7 @@ const queryClient = new QueryClient();
 const App = () => (
   <QueryClientProvider client={queryClient}>
     <TooltipProvider>
+      <CustomCursor />
       <Toaster />
       <Sonner />
       <ScrollProgress />

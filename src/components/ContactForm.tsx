@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useState, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import * as z from "zod";
+import { useNavigate } from "react-router-dom";
+import { supabase } from "@/integrations/supabase/client";
 import { Button } from "@/components/ui/button";
 import {
   Form,
@@ -71,6 +73,9 @@ type ContactFormValues = z.infer<typeof contactFormSchema>;
 export const ContactForm = () => {
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [uploadedFiles, setUploadedFiles] = useState<File[]>([]);
+  const [isDragging, setIsDragging] = useState(false);
+  const fileInputRef = useRef<HTMLInputElement>(null);
+  const navigate = useNavigate();
 
   const form = useForm<ContactFormValues>({
     resolver: zodResolver(contactFormSchema),
@@ -87,7 +92,27 @@ export const ContactForm = () => {
 
   const handleFileChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const files = Array.from(e.target.files || []);
-    
+    processFiles(files);
+    e.target.value = "";
+  };
+
+  const handleDrop = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(false);
+    const files = Array.from(e.dataTransfer.files);
+    processFiles(files);
+  };
+
+  const handleDragOver = (e: React.DragEvent) => {
+    e.preventDefault();
+    setIsDragging(true);
+  };
+
+  const handleDragLeave = () => {
+    setIsDragging(false);
+  };
+
+  const processFiles = (files: File[]) => {
     if (uploadedFiles.length + files.length > MAX_FILES) {
       toast({
         title: "Too Many Files",
@@ -125,9 +150,6 @@ export const ContactForm = () => {
         description: `${validFiles.length} file(s) added successfully.`,
       });
     }
-
-    // Reset input
-    e.target.value = "";
   };
 
   const removeFile = (index: number) => {
@@ -150,22 +172,45 @@ export const ContactForm = () => {
     setIsSubmitting(true);
     
     try {
-      // Simulate API call - replace with actual backend integration
-      await new Promise((resolve) => setTimeout(resolve, 1500));
+      // Convert files to base64
+      const filesData = await Promise.all(
+        uploadedFiles.map(async (file) => {
+          const base64 = await new Promise<string>((resolve) => {
+            const reader = new FileReader();
+            reader.onloadend = () => resolve(reader.result as string);
+            reader.readAsDataURL(file);
+          });
+          
+          return {
+            name: file.name,
+            data: base64,
+            type: file.type,
+          };
+        })
+      );
+
+      // Call edge function
+      const { data: response, error } = await supabase.functions.invoke(
+        "submit-contact-form",
+        {
+          body: {
+            ...data,
+            files: filesData,
+          },
+        }
+      );
+
+      if (error) throw error;
+
+      console.log("Form submitted successfully:", response);
       
-      console.log("Form submitted:", { ...data, files: uploadedFiles.map(f => f.name) });
-      
-      toast({
-        title: "Message Sent Successfully!",
-        description: "We'll get back to you within 24 hours.",
-      });
-      
-      form.reset();
-      setUploadedFiles([]);
-    } catch (error) {
+      // Navigate to success page
+      navigate("/contact-success");
+    } catch (error: any) {
+      console.error("Submission error:", error);
       toast({
         title: "Error",
-        description: "Failed to send message. Please try again.",
+        description: error.message || "Failed to send message. Please try again.",
         variant: "destructive",
       });
     } finally {
@@ -318,28 +363,43 @@ export const ContactForm = () => {
             </FormDescription>
           </div>
 
-          <div className="flex items-center gap-4">
+          {/* Drag and Drop Zone */}
+          <div
+            onDrop={handleDrop}
+            onDragOver={handleDragOver}
+            onDragLeave={handleDragLeave}
+            className={`border-2 border-dashed rounded-lg p-8 text-center transition-colors ${
+              isDragging
+                ? "border-primary bg-primary/5"
+                : "border-border hover:border-primary/50"
+            }`}
+          >
+            <Upload className="h-12 w-12 mx-auto mb-4 text-muted-foreground" />
+            <p className="text-sm font-medium mb-2">
+              Drag and drop files here, or click to browse
+            </p>
+            <p className="text-xs text-muted-foreground mb-4">
+              PDF, DOC, DOCX, TXT, JPG, PNG, WEBP (Max 10MB each)
+            </p>
             <Button
               type="button"
               variant="outline"
-              className="relative"
               disabled={uploadedFiles.length >= MAX_FILES}
-              onClick={() => document.getElementById("file-upload")?.click()}
+              onClick={() => fileInputRef.current?.click()}
             >
-              <Upload className="mr-2 h-4 w-4" />
               Choose Files
             </Button>
             <input
-              id="file-upload"
+              ref={fileInputRef}
               type="file"
               multiple
               accept=".pdf,.doc,.docx,.txt,.jpg,.jpeg,.png,.webp"
               onChange={handleFileChange}
               className="hidden"
             />
-            <span className="text-sm text-muted-foreground">
-              {uploadedFiles.length} / {MAX_FILES} files
-            </span>
+            <p className="text-xs text-muted-foreground mt-2">
+              {uploadedFiles.length} / {MAX_FILES} files uploaded
+            </p>
           </div>
 
           {/* File Preview List */}

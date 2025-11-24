@@ -20,6 +20,9 @@ import WebsiteDevelopment from "./pages/services/WebsiteDevelopment";
 import MobileApplications from "./pages/services/MobileApplications";
 import ContactSuccess from "./pages/ContactSuccess";
 import NotFound from "./pages/NotFound";
+import Admin from "./pages/Admin";
+import AdminLogin from "./pages/AdminLogin";
+import { ChatWidget } from "@/components/chat/ChatWidget";
 
 const queryClient = new QueryClient();
 
@@ -44,9 +47,12 @@ const App = () => (
           <Route path="/services/mobile-applications" element={<MobileApplications />} />
           <Route path="/process" element={<Process />} />
           <Route path="/contact-success" element={<ContactSuccess />} />
+          <Route path="/admin" element={<Admin />} />
+          <Route path="/admin-login" element={<AdminLogin />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
+        <ChatWidget />
         <BackToTop />
         <SettingsModal />
       </BrowserRouter>

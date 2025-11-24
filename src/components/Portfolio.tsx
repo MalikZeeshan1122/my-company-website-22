@@ -107,7 +107,10 @@ export const Portfolio = () => {
 
         {/* Project Counter */}
         <div className="text-center mb-8">
-          <p className="text-lg text-muted-foreground font-medium">
+          <p 
+            key={activeFilter}
+            className="text-lg text-muted-foreground font-medium animate-fade-in"
+          >
             {activeFilter === "All" 
               ? `${filteredProjects.length} projects` 
               : `Showing ${filteredProjects.length} ${activeFilter} ${filteredProjects.length === 1 ? 'project' : 'projects'}`

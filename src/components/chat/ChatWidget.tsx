@@ -14,6 +14,30 @@ const chatSchema = z.object({
   message: z.string().trim().min(1, "Message is required").max(1000)
 });
 
+// Notification sound utility
+const playNotificationSound = () => {
+  try {
+    const audioContext = new (window.AudioContext || (window as any).webkitAudioContext)();
+    const oscillator = audioContext.createOscillator();
+    const gainNode = audioContext.createGain();
+    
+    oscillator.connect(gainNode);
+    gainNode.connect(audioContext.destination);
+    
+    // Create a pleasant notification beep
+    oscillator.frequency.setValueAtTime(600, audioContext.currentTime);
+    oscillator.frequency.setValueAtTime(800, audioContext.currentTime + 0.1);
+    
+    gainNode.gain.setValueAtTime(0.3, audioContext.currentTime);
+    gainNode.gain.exponentialRampToValueAtTime(0.01, audioContext.currentTime + 0.3);
+    
+    oscillator.start(audioContext.currentTime);
+    oscillator.stop(audioContext.currentTime + 0.3);
+  } catch (error) {
+    console.error('Failed to play notification sound:', error);
+  }
+};
+
 export const ChatWidget = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [isMinimized, setIsMinimized] = useState(false);
@@ -65,8 +89,15 @@ export const ChatWidget = () => {
           filter: `session_id=eq.${sessionId}`
         },
         (payload) => {
+          const newMessage = payload.new;
+          
+          // Play notification sound for AI messages
+          if (newMessage.sender_type === 'support') {
+            playNotificationSound();
+          }
+          
           setMessages((prev) => {
-            const updated = [...prev, payload.new];
+            const updated = [...prev, newMessage];
             localStorage.setItem('chatMessages', JSON.stringify(updated));
             return updated;
           });

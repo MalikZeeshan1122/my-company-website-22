@@ -92,7 +92,7 @@ export const Portfolio = () => {
         </div>
 
         {/* Filter Buttons */}
-        <div className="flex flex-wrap justify-center gap-3 mb-12">
+        <div className="flex flex-wrap justify-center gap-3 mb-8">
           {categories.map((category) => (
             <Button
               key={category}
@@ -103,6 +103,16 @@ export const Portfolio = () => {
               {category}
             </Button>
           ))}
+        </div>
+
+        {/* Project Counter */}
+        <div className="text-center mb-8">
+          <p className="text-lg text-muted-foreground font-medium">
+            {activeFilter === "All" 
+              ? `${filteredProjects.length} projects` 
+              : `Showing ${filteredProjects.length} ${activeFilter} ${filteredProjects.length === 1 ? 'project' : 'projects'}`
+            }
+          </p>
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">

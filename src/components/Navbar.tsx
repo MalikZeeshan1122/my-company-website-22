@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Menu, Search } from "lucide-react";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { ServicesMegaMenu } from "./ServicesMegaMenu";
 import { SearchDialog } from "./SearchDialog";
@@ -8,6 +8,15 @@ import { SearchDialog } from "./SearchDialog";
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [logoLoaded, setLogoLoaded] = useState(false);
+
+  useEffect(() => {
+    // Trigger logo animation after a brief delay
+    const timer = setTimeout(() => {
+      setLogoLoaded(true);
+    }, 100);
+    return () => clearTimeout(timer);
+  }, []);
 
   return (
     <>
@@ -15,8 +24,23 @@ export const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <Link to="/" className="text-2xl font-bold text-gradient">
-              Agency
+            <Link 
+              to="/" 
+              className={`text-2xl font-bold text-gradient transition-all duration-1000 ${
+                logoLoaded 
+                  ? 'opacity-100 scale-100' 
+                  : 'opacity-0 scale-50'
+              }`}
+              style={{
+                transformOrigin: 'center',
+              }}
+            >
+              <span className="inline-block animate-logo-reveal">A</span>
+              <span className="inline-block animate-logo-reveal" style={{ animationDelay: '0.1s' }}>g</span>
+              <span className="inline-block animate-logo-reveal" style={{ animationDelay: '0.2s' }}>e</span>
+              <span className="inline-block animate-logo-reveal" style={{ animationDelay: '0.3s' }}>n</span>
+              <span className="inline-block animate-logo-reveal" style={{ animationDelay: '0.4s' }}>c</span>
+              <span className="inline-block animate-logo-reveal" style={{ animationDelay: '0.5s' }}>y</span>
             </Link>
           </div>
 

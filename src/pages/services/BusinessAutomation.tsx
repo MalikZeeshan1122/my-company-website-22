@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { CTA } from "@/components/CTA";
 import { Card } from "@/components/ui/card";
 import { Zap, CheckCircle } from "lucide-react";
+import { ServiceTestimonial } from "@/components/ServiceTestimonial";
 
 const BusinessAutomation = () => {
   return (
@@ -87,6 +88,21 @@ const BusinessAutomation = () => {
           </div>
         </div>
       </section>
+
+      <ServiceTestimonial
+        quote="See how we helped TTR Sotheby's International Realty create a private listing app that reduced property management time by 75% and reshaped their luxury real estate operations in just 30 days."
+        author="Brian Renner"
+        role="Real Estate Director"
+        company="TTR Sotheby's International Realty"
+        metric={{
+          value: "75%",
+          label: "reduction in management time"
+        }}
+        secondMetric={{
+          value: "30 days",
+          label: "to implementation"
+        }}
+      />
 
       <CTA />
       <Footer />

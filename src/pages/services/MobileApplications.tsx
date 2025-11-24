@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { CTA } from "@/components/CTA";
 import { Card } from "@/components/ui/card";
 import { Smartphone, CheckCircle } from "lucide-react";
+import { ServiceTestimonial } from "@/components/ServiceTestimonial";
 
 const MobileApplications = () => {
   return (
@@ -120,6 +121,21 @@ const MobileApplications = () => {
           </div>
         </div>
       </section>
+
+      <ServiceTestimonial
+        quote="In just 8 weeks, we migrated Evolutioner from BuildFire to FlutterFlow, rebuilding the wellness app without disrupting users' daily routines. The new app delivers 100% reliable background audio and stable cross-platform performance."
+        author="Evolutioner Team"
+        role="Product Lead"
+        company="Evolutioner"
+        metric={{
+          value: "85%",
+          label: "reduction in app crashes"
+        }}
+        secondMetric={{
+          value: "8 weeks",
+          label: "migration timeline"
+        }}
+      />
 
       <CTA />
       <Footer />

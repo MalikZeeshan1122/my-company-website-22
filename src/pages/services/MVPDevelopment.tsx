@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { CTA } from "@/components/CTA";
 import { Card } from "@/components/ui/card";
 import { Rocket, CheckCircle } from "lucide-react";
+import { ServiceTestimonial } from "@/components/ServiceTestimonial";
 
 const MVPDevelopment = () => {
   return (
@@ -106,6 +107,21 @@ const MVPDevelopment = () => {
           </div>
         </div>
       </section>
+
+      <ServiceTestimonial
+        quote="We are thrilled with the MaidManage app and the exceptional team at LowCode Agency. It has been a great experience, and we look forward to bringing more app ideas to life with you."
+        author="Brian Renner"
+        role="Founder"
+        company="MaidManage"
+        metric={{
+          value: "25%",
+          label: "reduction in time spent on manual calculations"
+        }}
+        secondMetric={{
+          value: "40%",
+          label: "improvement in payment processing"
+        }}
+      />
 
       <CTA />
       <Footer />

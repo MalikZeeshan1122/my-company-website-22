@@ -38,16 +38,9 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
   const [animationsEnabled, setAnimationsEnabled] = useState(loadSettings().animationsEnabled);
   const [parallaxIntensity, setParallaxIntensity] = useState(loadSettings().parallaxIntensity);
 
-  // Show toast on initial load if settings were restored
+  // Initialize settings
   useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored && !isInitialized) {
-      toast({
-        title: "Settings Restored",
-        description: "Your preferences have been loaded.",
-      });
-      setIsInitialized(true);
-    } else if (!isInitialized) {
+    if (!isInitialized) {
       setIsInitialized(true);
     }
   }, [isInitialized]);
@@ -63,17 +56,8 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
         parallaxIntensity,
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
-      toast({
-        title: "Settings Saved",
-        description: "Your preferences have been updated.",
-      });
     } catch (error) {
       console.error("Failed to save settings to localStorage:", error);
-      toast({
-        title: "Error",
-        description: "Failed to save settings. Please try again.",
-        variant: "destructive",
-      });
     }
   }, [useVideo, animationsEnabled, parallaxIntensity, isInitialized]);
 

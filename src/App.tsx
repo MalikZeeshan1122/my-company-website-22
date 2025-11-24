@@ -8,6 +8,12 @@ import About from "./pages/About";
 import CaseStudies from "./pages/CaseStudies";
 import Services from "./pages/Services";
 import Process from "./pages/Process";
+import BusinessApps from "./pages/services/BusinessApps";
+import AIImplementation from "./pages/services/AIImplementation";
+import BusinessAutomation from "./pages/services/BusinessAutomation";
+import MVPDevelopment from "./pages/services/MVPDevelopment";
+import WebsiteDevelopment from "./pages/services/WebsiteDevelopment";
+import MobileApplications from "./pages/services/MobileApplications";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -23,6 +29,12 @@ const App = () => (
           <Route path="/about" element={<About />} />
           <Route path="/case-studies" element={<CaseStudies />} />
           <Route path="/services" element={<Services />} />
+          <Route path="/services/business-apps" element={<BusinessApps />} />
+          <Route path="/services/ai-implementation" element={<AIImplementation />} />
+          <Route path="/services/business-automation" element={<BusinessAutomation />} />
+          <Route path="/services/mvp-development" element={<MVPDevelopment />} />
+          <Route path="/services/website-development" element={<WebsiteDevelopment />} />
+          <Route path="/services/mobile-applications" element={<MobileApplications />} />
           <Route path="/process" element={<Process />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />

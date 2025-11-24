@@ -7,6 +7,7 @@ interface ServiceItem {
   title: string;
   description: string;
   color: string;
+  href: string;
 }
 
 export const ServicesMegaMenu = () => {
@@ -29,31 +30,36 @@ export const ServicesMegaMenu = () => {
       icon: Briefcase,
       title: "Business Apps",
       description: "Custom CRMs, portals, and internal tools tailored to your operations",
-      color: "from-blue-500 to-cyan-500"
+      color: "from-blue-500 to-cyan-500",
+      href: "/services/business-apps"
     },
     {
       icon: Brain,
       title: "AI Implementation",
       description: "Smart automation and AI agents that transform your workflows",
-      color: "from-purple-500 to-pink-500"
+      color: "from-purple-500 to-pink-500",
+      href: "/services/ai-implementation"
     },
     {
       icon: Zap,
       title: "Business Automation",
       description: "Streamline repetitive tasks and integrate your existing tools",
-      color: "from-yellow-500 to-orange-500"
+      color: "from-yellow-500 to-orange-500",
+      href: "/services/business-automation"
     },
     {
       icon: Rocket,
       title: "MVPs",
       description: "Validate ideas quickly with production-ready minimum viable products",
-      color: "from-red-500 to-pink-500"
+      color: "from-red-500 to-pink-500",
+      href: "/services/mvp-development"
     },
     {
       icon: Code,
       title: "Website Development",
       description: "Modern, responsive websites that convert visitors to customers",
-      color: "from-indigo-500 to-purple-500"
+      color: "from-indigo-500 to-purple-500",
+      href: "/services/website-development"
     }
   ];
 
@@ -62,19 +68,22 @@ export const ServicesMegaMenu = () => {
       icon: Smartphone,
       title: "Mobile Applications",
       description: "Native iOS and Android apps that engage and delight users",
-      color: "from-green-500 to-emerald-500"
+      color: "from-green-500 to-emerald-500",
+      href: "/services/mobile-applications"
     },
     {
       icon: Rocket,
       title: "MVPs",
       description: "Launch fast, learn faster with investor-ready prototypes",
-      color: "from-red-500 to-pink-500"
+      color: "from-red-500 to-pink-500",
+      href: "/services/mvp-development"
     },
     {
       icon: Code,
       title: "Website Development",
       description: "Landing pages and web apps that establish your brand presence",
-      color: "from-indigo-500 to-purple-500"
+      color: "from-indigo-500 to-purple-500",
+      href: "/services/website-development"
     }
   ];
 
@@ -106,7 +115,7 @@ export const ServicesMegaMenu = () => {
                     return (
                       <a
                         key={index}
-                        href="/services"
+                        href={service.href}
                         onClick={() => setIsOpen(false)}
                         className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors group"
                       >
@@ -141,7 +150,7 @@ export const ServicesMegaMenu = () => {
                     return (
                       <a
                         key={index}
-                        href="/services"
+                        href={service.href}
                         onClick={() => setIsOpen(false)}
                         className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors group"
                       >

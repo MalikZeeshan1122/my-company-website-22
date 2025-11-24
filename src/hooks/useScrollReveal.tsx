@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { useSettings } from "@/context/SettingsContext";
 
 interface ScrollRevealOptions {
   threshold?: number;
@@ -8,8 +9,15 @@ interface ScrollRevealOptions {
 export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
+  const { animationsEnabled } = useSettings();
 
   useEffect(() => {
+    // If animations are disabled, immediately set as visible
+    if (!animationsEnabled) {
+      setIsVisible(true);
+      return;
+    }
+
     const observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
@@ -35,7 +43,7 @@ export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
         observer.unobserve(ref.current);
       }
     };
-  }, [options.threshold, options.rootMargin]);
+  }, [options.threshold, options.rootMargin, animationsEnabled]);
 
   return { ref, isVisible };
 };

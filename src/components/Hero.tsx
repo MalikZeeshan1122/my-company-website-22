@@ -1,15 +1,16 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Volume2, VolumeX, Video, Image } from "lucide-react";
+import { ArrowRight, Volume2, VolumeX } from "lucide-react";
 import { useState } from "react";
 import heroImage from "@/assets/hero-bg.jpg";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useCountUp } from "@/hooks/useCountUp";
 import { useParallax } from "@/hooks/useParallax";
+import { useSettings } from "@/context/SettingsContext";
 
 export const Hero = () => {
   const [isMuted, setIsMuted] = useState(true);
-  const [useVideo, setUseVideo] = useState(false);
-  const parallaxOffset = useParallax(0.5);
+  const { useVideo, parallaxIntensity } = useSettings();
+  const parallaxOffset = useParallax(parallaxIntensity);
   const { ref: statsRef, isVisible: statsVisible } = useScrollReveal({ threshold: 0.3 });
 
   const projectsCount = useCountUp(330, 2000, statsVisible);
@@ -19,17 +20,6 @@ export const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Toggle Button */}
-      <Button
-        variant="outline"
-        size="icon"
-        className="absolute top-24 right-20 z-20 bg-background/50 backdrop-blur-sm hover-scale"
-        onClick={() => setUseVideo(!useVideo)}
-        title={useVideo ? "Switch to Image" : "Switch to Video"}
-      >
-        {useVideo ? <Image className="h-4 w-4" /> : <Video className="h-4 w-4" />}
-      </Button>
-
       {/* Background Image/Video with Parallax and Overlay */}
       <div className="absolute inset-0 z-0">
         {useVideo ? (

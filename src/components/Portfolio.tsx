@@ -1,5 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
+import { Button } from "@/components/ui/button";
+import { useState } from "react";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
@@ -69,6 +71,14 @@ const projects = [
 ];
 
 export const Portfolio = () => {
+  const [activeFilter, setActiveFilter] = useState<string>("All");
+
+  const categories = ["All", "AI Automation", "AI Agent", "Web App", "Mobile App", "E-Commerce"];
+
+  const filteredProjects = activeFilter === "All" 
+    ? projects 
+    : projects.filter(project => project.category === activeFilter);
+
   return (
     <section id="work" className="py-24">
       <div className="container mx-auto px-4">
@@ -81,11 +91,25 @@ export const Portfolio = () => {
           </p>
         </div>
 
+        {/* Filter Buttons */}
+        <div className="flex flex-wrap justify-center gap-3 mb-12">
+          {categories.map((category) => (
+            <Button
+              key={category}
+              onClick={() => setActiveFilter(category)}
+              variant={activeFilter === category ? "default" : "outline"}
+              className="transition-all duration-300 hover-scale"
+            >
+              {category}
+            </Button>
+          ))}
+        </div>
+
         <div className="grid md:grid-cols-2 gap-8">
-          {projects.map((project, index) => (
+          {filteredProjects.map((project, index) => (
             <Card
               key={index}
-              className="overflow-hidden hover-lift hover:shadow-xl transition-all duration-300 group cursor-pointer"
+              className="overflow-hidden hover-lift hover:shadow-xl transition-all duration-300 group cursor-pointer animate-fade-in"
             >
               <div className="relative overflow-hidden aspect-[4/3]">
                 <img

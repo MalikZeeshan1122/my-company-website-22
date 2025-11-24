@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Volume2, VolumeX } from "lucide-react";
+import { ArrowRight, Volume2, VolumeX, Video, Image } from "lucide-react";
 import { useState } from "react";
 import heroImage from "@/assets/hero-bg.jpg";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
@@ -19,6 +19,17 @@ export const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Background Toggle Button */}
+      <Button
+        variant="outline"
+        size="icon"
+        className="absolute top-24 right-20 z-20 bg-background/50 backdrop-blur-sm hover-scale"
+        onClick={() => setUseVideo(!useVideo)}
+        title={useVideo ? "Switch to Image" : "Switch to Video"}
+      >
+        {useVideo ? <Image className="h-4 w-4" /> : <Video className="h-4 w-4" />}
+      </Button>
+
       {/* Background Image/Video with Parallax and Overlay */}
       <div className="absolute inset-0 z-0">
         {useVideo ? (
@@ -37,6 +48,7 @@ export const Hero = () => {
               size="icon"
               className="absolute top-24 right-8 z-20 bg-background/50 backdrop-blur-sm"
               onClick={() => setIsMuted(!isMuted)}
+              title={isMuted ? "Unmute" : "Mute"}
             >
               {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
             </Button>

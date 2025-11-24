@@ -2,7 +2,7 @@ export const Footer = () => {
   return (
     <footer className="border-t border-border bg-background">
       <div className="container mx-auto px-4 py-12">
-        <div className="grid md:grid-cols-4 gap-8 mb-8">
+        <div className="grid md:grid-cols-5 gap-8 mb-8">
           <div>
             <h3 className="font-bold text-xl mb-4 text-gradient">Agency</h3>
             <p className="text-muted-foreground">
@@ -11,34 +11,52 @@ export const Footer = () => {
           </div>
           <div>
             <h4 className="font-semibold mb-4">Services</h4>
-            <ul className="space-y-2 text-muted-foreground">
-              <li><a href="#" className="hover:text-foreground transition-colors">Web Development</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Mobile Apps</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">UI/UX Design</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Consulting</a></li>
+            <ul className="space-y-2 text-muted-foreground text-sm">
+              <li><a href="#" className="hover:text-foreground transition-colors">AI for business</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Business apps</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Business automation</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Mobile apps</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">MVP development</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Web design</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Company</h4>
-            <ul className="space-y-2 text-muted-foreground">
-              <li><a href="#" className="hover:text-foreground transition-colors">About Us</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Case Studies</a></li>
+            <h4 className="font-semibold mb-4">Platforms</h4>
+            <ul className="space-y-2 text-muted-foreground text-sm">
+              <li><a href="#" className="hover:text-foreground transition-colors">Glide Apps agency</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Bubble agency</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">FlutterFlow agency</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Webflow development</a></li>
+            </ul>
+          </div>
+          <div>
+            <h4 className="font-semibold mb-4">Resources</h4>
+            <ul className="space-y-2 text-muted-foreground text-sm">
               <li><a href="#" className="hover:text-foreground transition-colors">Blog</a></li>
-              <li><a href="#" className="hover:text-foreground transition-colors">Careers</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Podcast</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">No-code tools</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Case studies</a></li>
             </ul>
           </div>
           <div>
-            <h4 className="font-semibold mb-4">Contact</h4>
-            <ul className="space-y-2 text-muted-foreground">
-              <li>hello@agency.com</li>
-              <li>+1 (555) 123-4567</li>
-              <li>123 Business St</li>
-              <li>San Francisco, CA 94107</li>
+            <h4 className="font-semibold mb-4">Guides</h4>
+            <ul className="space-y-2 text-muted-foreground text-sm">
+              <li><a href="#" className="hover:text-foreground transition-colors">No-code development</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">What is Bubble.io?</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">FlutterFlow development</a></li>
+              <li><a href="#" className="hover:text-foreground transition-colors">Webflow development</a></li>
             </ul>
           </div>
         </div>
-        <div className="pt-8 border-t border-border text-center text-muted-foreground">
-          <p>© 2024 Agency. All rights reserved.</p>
+        <div className="pt-8 border-t border-border">
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <p className="text-muted-foreground text-sm">
+              © 2012 - 2025 Agency. All Rights Reserved.
+            </p>
+            <a href="#" className="text-sm text-muted-foreground hover:text-foreground transition-colors">
+              Privacy Policy
+            </a>
+          </div>
         </div>
       </div>
     </footer>

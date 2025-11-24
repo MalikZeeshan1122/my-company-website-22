@@ -1,4 +1,4 @@
-import { createContext, useContext, useState, ReactNode } from "react";
+import { createContext, useContext, useState, ReactNode, useEffect } from "react";
 
 interface SettingsContextType {
   useVideo: boolean;
@@ -11,10 +11,44 @@ interface SettingsContextType {
 
 const SettingsContext = createContext<SettingsContextType | undefined>(undefined);
 
+const STORAGE_KEY = "app-settings";
+
+const defaultSettings = {
+  useVideo: false,
+  animationsEnabled: true,
+  parallaxIntensity: 0.5,
+};
+
+const loadSettings = () => {
+  try {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored) {
+      return { ...defaultSettings, ...JSON.parse(stored) };
+    }
+  } catch (error) {
+    console.error("Failed to load settings from localStorage:", error);
+  }
+  return defaultSettings;
+};
+
 export const SettingsProvider = ({ children }: { children: ReactNode }) => {
-  const [useVideo, setUseVideo] = useState(false);
-  const [animationsEnabled, setAnimationsEnabled] = useState(true);
-  const [parallaxIntensity, setParallaxIntensity] = useState(0.5);
+  const [useVideo, setUseVideo] = useState(loadSettings().useVideo);
+  const [animationsEnabled, setAnimationsEnabled] = useState(loadSettings().animationsEnabled);
+  const [parallaxIntensity, setParallaxIntensity] = useState(loadSettings().parallaxIntensity);
+
+  // Save to localStorage whenever settings change
+  useEffect(() => {
+    try {
+      const settings = {
+        useVideo,
+        animationsEnabled,
+        parallaxIntensity,
+      };
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
+    } catch (error) {
+      console.error("Failed to save settings to localStorage:", error);
+    }
+  }, [useVideo, animationsEnabled, parallaxIntensity]);
 
   return (
     <SettingsContext.Provider

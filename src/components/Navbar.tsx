@@ -1,5 +1,14 @@
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import {
+  DropdownMenu,
+  DropdownMenuContent,
+  DropdownMenuGroup,
+  DropdownMenuItem,
+  DropdownMenuLabel,
+  DropdownMenuSeparator,
+  DropdownMenuTrigger,
+} from "@/components/ui/dropdown-menu";
+import { Menu, ChevronDown } from "lucide-react";
 import { useState } from "react";
 
 export const Navbar = () => {
@@ -20,9 +29,49 @@ export const Navbar = () => {
             <a href="/process" className="text-foreground/80 hover:text-foreground transition-colors">
               Our process
             </a>
-            <a href="/services" className="text-foreground/80 hover:text-foreground transition-colors">
-              Services
-            </a>
+            
+            <DropdownMenu>
+              <DropdownMenuTrigger className="flex items-center gap-1 text-foreground/80 hover:text-foreground transition-colors outline-none">
+                Services
+                <ChevronDown className="h-4 w-4" />
+              </DropdownMenuTrigger>
+              <DropdownMenuContent className="w-64" align="start">
+                <DropdownMenuLabel className="text-base">For Businesses</DropdownMenuLabel>
+                <DropdownMenuGroup>
+                  <DropdownMenuItem asChild>
+                    <a href="/services" className="cursor-pointer">Business Apps</a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a href="/services" className="cursor-pointer">AI Implementation</a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a href="/services" className="cursor-pointer">Business Automation</a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a href="/services" className="cursor-pointer">MVPs</a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a href="/services" className="cursor-pointer">Website Development</a>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+                
+                <DropdownMenuSeparator />
+                
+                <DropdownMenuLabel className="text-base">For Startups</DropdownMenuLabel>
+                <DropdownMenuGroup>
+                  <DropdownMenuItem asChild>
+                    <a href="/services" className="cursor-pointer">Mobile Applications</a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a href="/services" className="cursor-pointer">MVPs</a>
+                  </DropdownMenuItem>
+                  <DropdownMenuItem asChild>
+                    <a href="/services" className="cursor-pointer">Website Development</a>
+                  </DropdownMenuItem>
+                </DropdownMenuGroup>
+              </DropdownMenuContent>
+            </DropdownMenu>
+            
             <a href="/case-studies" className="text-foreground/80 hover:text-foreground transition-colors">
               Case Studies
             </a>
@@ -56,13 +105,72 @@ export const Navbar = () => {
             >
               Our process
             </a>
-            <a
-              href="/services"
-              className="block text-foreground/80 hover:text-foreground transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              Services
-            </a>
+            
+            <div className="space-y-2">
+              <div className="text-foreground/80 font-medium px-0">Services</div>
+              <div className="pl-4 space-y-2">
+                <div className="text-sm font-medium text-muted-foreground">For Businesses</div>
+                <a
+                  href="/services"
+                  className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Business Apps
+                </a>
+                <a
+                  href="/services"
+                  className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  AI Implementation
+                </a>
+                <a
+                  href="/services"
+                  className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Business Automation
+                </a>
+                <a
+                  href="/services"
+                  className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  MVPs
+                </a>
+                <a
+                  href="/services"
+                  className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Website Development
+                </a>
+                
+                <div className="text-sm font-medium text-muted-foreground pt-2">For Startups</div>
+                <a
+                  href="/services"
+                  className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Mobile Applications
+                </a>
+                <a
+                  href="/services"
+                  className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  MVPs
+                </a>
+                <a
+                  href="/services"
+                  className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
+                  onClick={() => setIsMenuOpen(false)}
+                >
+                  Website Development
+                </a>
+              </div>
+            </div>
+            
             <a
               href="/case-studies"
               className="block text-foreground/80 hover:text-foreground transition-colors"

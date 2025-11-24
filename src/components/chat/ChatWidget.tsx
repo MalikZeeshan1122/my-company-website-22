@@ -110,7 +110,7 @@ export const ChatWidget = () => {
     };
   }, [sessionId]);
 
-  const getAiResponse = async (userMessage: string) => {
+  const getAiResponse = async (userMessage: string, currentSessionId: string) => {
     setIsAiTyping(true);
     try {
       const conversationHistory = messages.map(msg => ({
@@ -126,7 +126,7 @@ export const ChatWidget = () => {
       const { data, error } = await supabase.functions.invoke('chat-ai-response', {
         body: { 
           messages: conversationHistory,
-          sessionId 
+          sessionId: currentSessionId 
         }
       });
 
@@ -137,7 +137,7 @@ export const ChatWidget = () => {
       const { error: insertError } = await supabase
         .from('chat_messages')
         .insert({
-          session_id: sessionId,
+          session_id: currentSessionId,
           content: aiMessage,
           sender_type: 'support',
           sender_name: 'AI Assistant'
@@ -212,7 +212,7 @@ export const ChatWidget = () => {
         description: "Our AI assistant will respond shortly"
       });
 
-      await getAiResponse(validation.message);
+      await getAiResponse(validation.message, session.id);
     } catch (error) {
       if (error instanceof z.ZodError) {
         toast({
@@ -252,7 +252,7 @@ export const ChatWidget = () => {
 
       if (error) throw error;
 
-      await getAiResponse(validation);
+      await getAiResponse(validation, sessionId!);
     } catch (error) {
       toast({
         variant: "destructive",

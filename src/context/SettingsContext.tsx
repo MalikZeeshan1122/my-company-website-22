@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
+import { toast } from "@/hooks/use-toast";
 
 interface SettingsContextType {
   useVideo: boolean;
@@ -32,12 +33,29 @@ const loadSettings = () => {
 };
 
 export const SettingsProvider = ({ children }: { children: ReactNode }) => {
+  const [isInitialized, setIsInitialized] = useState(false);
   const [useVideo, setUseVideo] = useState(loadSettings().useVideo);
   const [animationsEnabled, setAnimationsEnabled] = useState(loadSettings().animationsEnabled);
   const [parallaxIntensity, setParallaxIntensity] = useState(loadSettings().parallaxIntensity);
 
+  // Show toast on initial load if settings were restored
+  useEffect(() => {
+    const stored = localStorage.getItem(STORAGE_KEY);
+    if (stored && !isInitialized) {
+      toast({
+        title: "Settings Restored",
+        description: "Your preferences have been loaded.",
+      });
+      setIsInitialized(true);
+    } else if (!isInitialized) {
+      setIsInitialized(true);
+    }
+  }, [isInitialized]);
+
   // Save to localStorage whenever settings change
   useEffect(() => {
+    if (!isInitialized) return;
+
     try {
       const settings = {
         useVideo,
@@ -45,10 +63,19 @@ export const SettingsProvider = ({ children }: { children: ReactNode }) => {
         parallaxIntensity,
       };
       localStorage.setItem(STORAGE_KEY, JSON.stringify(settings));
+      toast({
+        title: "Settings Saved",
+        description: "Your preferences have been updated.",
+      });
     } catch (error) {
       console.error("Failed to save settings to localStorage:", error);
+      toast({
+        title: "Error",
+        description: "Failed to save settings. Please try again.",
+        variant: "destructive",
+      });
     }
-  }, [useVideo, animationsEnabled, parallaxIntensity]);
+  }, [useVideo, animationsEnabled, parallaxIntensity, isInitialized]);
 
   return (
     <SettingsContext.Provider

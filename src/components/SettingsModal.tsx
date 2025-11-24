@@ -13,6 +13,7 @@ import { Label } from "@/components/ui/label";
 import { Switch } from "@/components/ui/switch";
 import { Slider } from "@/components/ui/slider";
 import { useSettings } from "@/context/SettingsContext";
+import { toast } from "@/hooks/use-toast";
 
 export const SettingsModal = () => {
   const [open, setOpen] = useState(false);
@@ -24,6 +25,16 @@ export const SettingsModal = () => {
     parallaxIntensity,
     setParallaxIntensity,
   } = useSettings();
+
+  const handleReset = () => {
+    setUseVideo(false);
+    setAnimationsEnabled(true);
+    setParallaxIntensity(0.5);
+    toast({
+      title: "Settings Reset",
+      description: "All settings have been restored to defaults.",
+    });
+  };
 
   return (
     <Dialog open={open} onOpenChange={setOpen}>
@@ -103,11 +114,7 @@ export const SettingsModal = () => {
           <Button
             variant="outline"
             className="w-full"
-            onClick={() => {
-              setUseVideo(false);
-              setAnimationsEnabled(true);
-              setParallaxIntensity(0.5);
-            }}
+            onClick={handleReset}
           >
             Reset to Defaults
           </Button>

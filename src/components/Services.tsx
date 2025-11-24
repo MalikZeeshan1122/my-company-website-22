@@ -49,13 +49,22 @@ export const Services = () => {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="p-6 hover-lift hover:shadow-lg transition-all duration-300 border-border/50 bg-card"
+              className="p-6 hover-lift hover:shadow-xl transition-all duration-300 border-border/50 bg-card group relative overflow-hidden"
             >
-              <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
-                <service.icon className="h-6 w-6 text-primary" />
+              {/* Animated gradient background on hover */}
+              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+              
+              <div className="relative z-10">
+                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+                  <service.icon className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300" />
+                </div>
+                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-300">
+                  {service.title}
+                </h3>
+                <p className="text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
+                  {service.description}
+                </p>
               </div>
-              <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-              <p className="text-muted-foreground">{service.description}</p>
             </Card>
           ))}
         </div>

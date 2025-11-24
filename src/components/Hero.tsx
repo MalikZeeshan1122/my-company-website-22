@@ -5,11 +5,11 @@ import heroImage from "@/assets/hero-bg.jpg";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useCountUp } from "@/hooks/useCountUp";
 import { useParallax } from "@/hooks/useParallax";
-import { useSettings } from "@/context/SettingsContext";
 
 export const Hero = () => {
   const [isMuted, setIsMuted] = useState(true);
-  const { useVideo, parallaxIntensity } = useSettings();
+  const useVideo = false; // Default: use image background
+  const parallaxIntensity = 0.5; // Default parallax intensity
   const parallaxOffset = useParallax(parallaxIntensity);
   const { ref: statsRef, isVisible: statsVisible } = useScrollReveal({ threshold: 0.3 });
 

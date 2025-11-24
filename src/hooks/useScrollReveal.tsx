@@ -1,5 +1,4 @@
 import { useEffect, useRef, useState } from "react";
-import { useSettings } from "@/context/SettingsContext";
 
 interface ScrollRevealOptions {
   threshold?: number;
@@ -9,7 +8,7 @@ interface ScrollRevealOptions {
 export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
   const [isVisible, setIsVisible] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
-  const { animationsEnabled } = useSettings();
+  const animationsEnabled = true; // Default: animations enabled
 
   useEffect(() => {
     // If animations are disabled, immediately set as visible

@@ -129,7 +129,7 @@ const handler = async (req: Request): Promise<Response> => {
     try {
       await resend.emails.send({
         from: "Contact Form <onboarding@resend.dev>",
-        to: ["your-team@example.com"], // Replace with actual team email
+        to: ["malikzeeshan3.1417@gmail.com"],
         subject: `New Contact Form Submission from ${formData.name}`,
         html: `
           <h1>New Contact Form Submission</h1>

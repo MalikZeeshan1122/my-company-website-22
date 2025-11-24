@@ -52,8 +52,8 @@ const ContactSuccess = () => {
 
           <p className="text-sm text-muted-foreground mt-8">
             Need urgent assistance? Email us directly at{" "}
-            <a href="mailto:contact@example.com" className="text-primary hover:underline">
-              contact@example.com
+            <a href="mailto:malikzeeshan3.1417@gmail.com" className="text-primary hover:underline">
+              malikzeeshan3.1417@gmail.com
             </a>
           </p>
         </div>

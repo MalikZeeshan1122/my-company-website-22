@@ -17,7 +17,7 @@ export const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
-            <a href="#services" className="text-foreground/80 hover:text-foreground transition-colors">
+            <a href="/services" className="text-foreground/80 hover:text-foreground transition-colors">
               Services
             </a>
             <a href="/case-studies" className="text-foreground/80 hover:text-foreground transition-colors">
@@ -47,7 +47,7 @@ export const Navbar = () => {
           {isMenuOpen && (
           <div className="md:hidden py-4 space-y-3 animate-fade-in">
             <a
-              href="#services"
+              href="/services"
               className="block text-foreground/80 hover:text-foreground transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >

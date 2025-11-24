@@ -35,8 +35,13 @@ export const Navbar = () => {
                 Services
                 <ChevronDown className="h-4 w-4" />
               </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-64" align="start">
-                <DropdownMenuLabel className="text-base">For Businesses</DropdownMenuLabel>
+              <DropdownMenuContent className="w-80 z-[100] bg-background" align="start">
+                <div className="px-2 py-3">
+                  <DropdownMenuLabel className="text-base font-bold">For Businesses</DropdownMenuLabel>
+                  <p className="text-xs text-muted-foreground mt-1 mb-3 px-2">
+                    Custom software to streamline operations, from internal tools and CRMs to AI-powered automation.
+                  </p>
+                </div>
                 <DropdownMenuGroup>
                   <DropdownMenuItem asChild>
                     <a href="/services" className="cursor-pointer">Business Apps</a>
@@ -57,7 +62,12 @@ export const Navbar = () => {
                 
                 <DropdownMenuSeparator />
                 
-                <DropdownMenuLabel className="text-base">For Startups</DropdownMenuLabel>
+                <div className="px-2 py-3">
+                  <DropdownMenuLabel className="text-base font-bold">For Startups</DropdownMenuLabel>
+                  <p className="text-xs text-muted-foreground mt-1 mb-3 px-2">
+                    From idea to launch. We build the high-impact digital products that define your vision.
+                  </p>
+                </div>
                 <DropdownMenuGroup>
                   <DropdownMenuItem asChild>
                     <a href="/services" className="cursor-pointer">Mobile Applications</a>
@@ -109,7 +119,12 @@ export const Navbar = () => {
             <div className="space-y-2">
               <div className="text-foreground/80 font-medium px-0">Services</div>
               <div className="pl-4 space-y-2">
-                <div className="text-sm font-medium text-muted-foreground">For Businesses</div>
+                <div className="space-y-1">
+                  <div className="text-sm font-bold">For Businesses</div>
+                  <p className="text-xs text-muted-foreground mb-2">
+                    Custom software to streamline operations, from internal tools and CRMs to AI-powered automation.
+                  </p>
+                </div>
                 <a
                   href="/services"
                   className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
@@ -146,7 +161,12 @@ export const Navbar = () => {
                   Website Development
                 </a>
                 
-                <div className="text-sm font-medium text-muted-foreground pt-2">For Startups</div>
+                <div className="space-y-1 pt-3">
+                  <div className="text-sm font-bold">For Startups</div>
+                  <p className="text-xs text-muted-foreground mb-2">
+                    From idea to launch. We build the high-impact digital products that define your vision.
+                  </p>
+                </div>
                 <a
                   href="/services"
                   className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"

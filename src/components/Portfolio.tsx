@@ -4,8 +4,40 @@ import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
 import project4 from "@/assets/project-4.jpg";
+import projectN8n from "@/assets/project-n8n.jpg";
+import projectMakecom from "@/assets/project-makecom.jpg";
+import projectAiAgent from "@/assets/project-ai-agent.jpg";
+import projectAutomation from "@/assets/project-automation.jpg";
 
 const projects = [
+  {
+    image: projectN8n,
+    title: "N8N Workflow Automation",
+    category: "AI Automation",
+    description: "Enterprise workflow automation system integrating multiple business tools with intelligent data processing.",
+    tags: ["N8N", "API Integration", "Automation"],
+  },
+  {
+    image: projectMakecom,
+    title: "Make.com Integration Hub",
+    category: "AI Automation",
+    description: "Multi-platform automation solution connecting CRM, marketing, and analytics tools seamlessly.",
+    tags: ["Make.com", "Integrations", "Automation"],
+  },
+  {
+    image: projectAiAgent,
+    title: "AI Customer Support Agent",
+    category: "AI Agent",
+    description: "Intelligent chatbot providing 24/7 customer support with natural language understanding and context awareness.",
+    tags: ["AI", "NLP", "Chatbot"],
+  },
+  {
+    image: projectAutomation,
+    title: "Business Process Automation",
+    category: "AI Automation",
+    description: "End-to-end business automation platform with AI-powered analytics and workflow optimization.",
+    tags: ["AI", "Analytics", "Automation"],
+  },
   {
     image: project1,
     title: "FinTech Platform",

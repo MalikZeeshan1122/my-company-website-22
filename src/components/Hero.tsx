@@ -1,19 +1,57 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight } from "lucide-react";
+import { ArrowRight, Volume2, VolumeX } from "lucide-react";
+import { useState } from "react";
 import heroImage from "@/assets/hero-bg.jpg";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useCountUp } from "@/hooks/useCountUp";
+import { useParallax } from "@/hooks/useParallax";
 
 export const Hero = () => {
+  const [isMuted, setIsMuted] = useState(true);
+  const [useVideo, setUseVideo] = useState(false);
+  const parallaxOffset = useParallax(0.5);
+  const { ref: statsRef, isVisible: statsVisible } = useScrollReveal({ threshold: 0.3 });
+
+  const projectsCount = useCountUp(330, 2000, statsVisible);
+  const satisfactionCount = useCountUp(98, 2000, statsVisible);
+  const teamCount = useCountUp(50, 2000, statsVisible);
+  const yearsCount = useCountUp(10, 2000, statsVisible);
+
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-      {/* Background Image with Overlay */}
-      <div 
-        className="absolute inset-0 z-0"
-        style={{
-          backgroundImage: `url(${heroImage})`,
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-        }}
-      >
+      {/* Background Image/Video with Parallax and Overlay */}
+      <div className="absolute inset-0 z-0">
+        {useVideo ? (
+          <>
+            <video
+              autoPlay
+              loop
+              muted={isMuted}
+              playsInline
+              className="absolute inset-0 w-full h-full object-cover"
+            >
+              <source src="https://assets.mixkit.co/videos/preview/mixkit-digital-animation-of-futuristic-devices-1366-large.mp4" type="video/mp4" />
+            </video>
+            <Button
+              variant="outline"
+              size="icon"
+              className="absolute top-24 right-8 z-20 bg-background/50 backdrop-blur-sm"
+              onClick={() => setIsMuted(!isMuted)}
+            >
+              {isMuted ? <VolumeX className="h-4 w-4" /> : <Volume2 className="h-4 w-4" />}
+            </Button>
+          </>
+        ) : (
+          <div
+            className="absolute inset-0"
+            style={{
+              backgroundImage: `url(${heroImage})`,
+              backgroundSize: 'cover',
+              backgroundPosition: 'center',
+              transform: `translateY(${parallaxOffset}px)`,
+            }}
+          />
+        )}
         <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background"></div>
       </div>
 
@@ -40,21 +78,21 @@ export const Hero = () => {
         </div>
 
         {/* Stats */}
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 max-w-4xl mx-auto">
+        <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 max-w-4xl mx-auto">
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">330+</div>
+            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">{projectsCount}+</div>
             <div className="text-muted-foreground">Projects Delivered</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">98%</div>
+            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">{satisfactionCount}%</div>
             <div className="text-muted-foreground">Client Satisfaction</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">50+</div>
+            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">{teamCount}+</div>
             <div className="text-muted-foreground">Team Members</div>
           </div>
           <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">10+</div>
+            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">{yearsCount}+</div>
             <div className="text-muted-foreground">Years Experience</div>
           </div>
         </div>

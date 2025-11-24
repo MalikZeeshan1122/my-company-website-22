@@ -1,5 +1,6 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown, Briefcase, Brain, Zap, Rocket, Code, Smartphone } from "lucide-react";
+import { Link } from "react-router-dom";
 import { Card } from "@/components/ui/card";
 
 interface ServiceItem {
@@ -113,9 +114,9 @@ export const ServicesMegaMenu = () => {
                   {businessServices.map((service, index) => {
                     const Icon = service.icon;
                     return (
-                      <a
+                      <Link
                         key={index}
-                        href={service.href}
+                        to={service.href}
                         onClick={() => setIsOpen(false)}
                         className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors group"
                       >
@@ -130,7 +131,7 @@ export const ServicesMegaMenu = () => {
                             {service.description}
                           </p>
                         </div>
-                      </a>
+                      </Link>
                     );
                   })}
                 </div>
@@ -148,9 +149,9 @@ export const ServicesMegaMenu = () => {
                   {startupServices.map((service, index) => {
                     const Icon = service.icon;
                     return (
-                      <a
+                      <Link
                         key={index}
-                        href={service.href}
+                        to={service.href}
                         onClick={() => setIsOpen(false)}
                         className="flex items-start gap-3 p-3 rounded-lg hover:bg-muted/50 transition-colors group"
                       >
@@ -165,7 +166,7 @@ export const ServicesMegaMenu = () => {
                             {service.description}
                           </p>
                         </div>
-                      </a>
+                      </Link>
                     );
                   })}
                 </div>
@@ -174,14 +175,14 @@ export const ServicesMegaMenu = () => {
 
             {/* View All Services Link */}
             <div className="mt-8 pt-6 border-t border-border text-center">
-              <a
-                href="/services"
+              <Link
+                to="/services"
                 onClick={() => setIsOpen(false)}
                 className="inline-flex items-center gap-2 text-primary hover:text-primary/80 font-semibold transition-colors"
               >
                 View All Services
                 <ChevronDown className="h-4 w-4 -rotate-90" />
-              </a>
+              </Link>
             </div>
           </Card>
         </div>

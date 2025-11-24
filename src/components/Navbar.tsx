@@ -1,6 +1,7 @@
 import { Button } from "@/components/ui/button";
 import { Menu, Search } from "lucide-react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import { ServicesMegaMenu } from "./ServicesMegaMenu";
 import { SearchDialog } from "./SearchDialog";
 
@@ -14,9 +15,9 @@ export const Navbar = () => {
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
-            <a href="/" className="text-2xl font-bold text-gradient">
+            <Link to="/" className="text-2xl font-bold text-gradient">
               Agency
-            </a>
+            </Link>
           </div>
 
           {/* Desktop Navigation */}
@@ -31,17 +32,17 @@ export const Navbar = () => {
             
             <ServicesMegaMenu />
             
-            <a href="/case-studies" className="text-foreground/80 hover:text-foreground transition-colors">
+            <Link to="/case-studies" className="text-foreground/80 hover:text-foreground transition-colors">
               Case Studies
-            </a>
+            </Link>
             
-            <a href="/process" className="text-foreground/80 hover:text-foreground transition-colors">
+            <Link to="/process" className="text-foreground/80 hover:text-foreground transition-colors">
               Our process
-            </a>
+            </Link>
             
-            <a href="/about" className="text-foreground/80 hover:text-foreground transition-colors">
+            <Link to="/about" className="text-foreground/80 hover:text-foreground transition-colors">
               About
-            </a>
+            </Link>
             
             <a href="#contact" className="text-foreground/80 hover:text-foreground transition-colors">
               Contact
@@ -80,41 +81,41 @@ export const Navbar = () => {
                     Custom software to streamline operations, from internal tools and CRMs to AI-powered automation.
                   </p>
                 </div>
-                <a
-                  href="/services"
+                <Link
+                  to="/services"
                   className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Business Apps
-                </a>
-                <a
-                  href="/services"
+                </Link>
+                <Link
+                  to="/services"
                   className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   AI Implementation
-                </a>
-                <a
-                  href="/services"
+                </Link>
+                <Link
+                  to="/services"
                   className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Business Automation
-                </a>
-                <a
-                  href="/services"
+                </Link>
+                <Link
+                  to="/services"
                   className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   MVPs
-                </a>
-                <a
-                  href="/services"
+                </Link>
+                <Link
+                  to="/services"
                   className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Website Development
-                </a>
+                </Link>
                 
                 <div className="space-y-1 pt-3">
                   <div className="text-sm font-bold">For Startups</div>
@@ -122,51 +123,51 @@ export const Navbar = () => {
                     From idea to launch. We build the high-impact digital products that define your vision.
                   </p>
                 </div>
-                <a
-                  href="/services"
+                <Link
+                  to="/services"
                   className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Mobile Applications
-                </a>
-                <a
-                  href="/services"
+                </Link>
+                <Link
+                  to="/services"
                   className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   MVPs
-                </a>
-                <a
-                  href="/services"
+                </Link>
+                <Link
+                  to="/services"
                   className="block text-sm text-foreground/80 hover:text-foreground transition-colors pl-2"
                   onClick={() => setIsMenuOpen(false)}
                 >
                   Website Development
-                </a>
+                </Link>
               </div>
             </div>
             
-            <a
-              href="/case-studies"
+            <Link
+              to="/case-studies"
               className="block text-foreground/80 hover:text-foreground transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Case Studies
-            </a>
-            <a
-              href="/process"
+            </Link>
+            <Link
+              to="/process"
               className="block text-foreground/80 hover:text-foreground transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Our process
-            </a>
-            <a
-              href="/about"
+            </Link>
+            <Link
+              to="/about"
               className="block text-foreground/80 hover:text-foreground transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               About
-            </a>
+            </Link>
             <a
               href="#contact"
               className="block text-foreground/80 hover:text-foreground transition-colors"

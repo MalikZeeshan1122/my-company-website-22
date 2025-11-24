@@ -5,12 +5,15 @@ import heroImage from "@/assets/hero-bg.jpg";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { useCountUp } from "@/hooks/useCountUp";
 import { useParallax } from "@/hooks/useParallax";
+import { AnimatedParticles } from "@/components/AnimatedParticles";
 
 export const Hero = () => {
   const [isMuted, setIsMuted] = useState(true);
   const useVideo = true; // Enable video background
   const parallaxIntensity = 0.5; // Default parallax intensity
   const parallaxOffset = useParallax(parallaxIntensity);
+  const parallaxOffsetSlow = useParallax(0.3);
+  const parallaxOffsetFast = useParallax(0.7);
   const { ref: statsRef, isVisible: statsVisible } = useScrollReveal({ threshold: 0.3 });
 
   const projectsCount = useCountUp(330, 2000, statsVisible);
@@ -20,6 +23,11 @@ export const Hero = () => {
 
   return (
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
+      {/* Animated Particles */}
+      <div className="absolute inset-0 z-[5]">
+        <AnimatedParticles />
+      </div>
+
       {/* Background Image/Video with Parallax and Overlay */}
       <div className="absolute inset-0 z-0">
         {useVideo ? (
@@ -54,8 +62,25 @@ export const Hero = () => {
             }}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background"></div>
-        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,hsl(var(--background))_100%)]"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background z-[1]"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,hsl(var(--background))_100%)] z-[2]"></div>
+      </div>
+
+      {/* Parallax Layers */}
+      <div 
+        className="absolute inset-0 z-[3] pointer-events-none"
+        style={{ transform: `translateY(${parallaxOffsetSlow}px)` }}
+      >
+        <div className="absolute top-20 left-10 w-32 h-32 rounded-full bg-primary/5 blur-3xl"></div>
+        <div className="absolute top-40 right-20 w-48 h-48 rounded-full bg-primary/10 blur-3xl"></div>
+      </div>
+      
+      <div 
+        className="absolute inset-0 z-[4] pointer-events-none"
+        style={{ transform: `translateY(${parallaxOffsetFast}px)` }}
+      >
+        <div className="absolute bottom-40 left-1/4 w-40 h-40 rounded-full bg-primary/5 blur-3xl"></div>
+        <div className="absolute bottom-20 right-1/3 w-56 h-56 rounded-full bg-primary/10 blur-3xl"></div>
       </div>
 
       {/* Content */}

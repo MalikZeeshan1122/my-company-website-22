@@ -1,5 +1,5 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar } from "lucide-react";
+import { ArrowRight, Calendar, Mail as MailIcon } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ContactForm } from "@/components/ContactForm";
@@ -26,13 +26,17 @@ export const CTA = () => {
 
         <div className="max-w-3xl mx-auto">
           <Tabs defaultValue="form" className="w-full">
-            <TabsList className="grid w-full grid-cols-2 mb-8">
+            <TabsList className="grid w-full grid-cols-3 mb-8">
               <TabsTrigger value="form" className="text-base">
                 Contact Form
               </TabsTrigger>
               <TabsTrigger value="calendar" className="text-base">
                 <Calendar className="mr-2 h-4 w-4" />
-                Schedule a Call
+                Schedule Call
+              </TabsTrigger>
+              <TabsTrigger value="email" className="text-base">
+                <MailIcon className="mr-2 h-4 w-4" />
+                Email Us
               </TabsTrigger>
             </TabsList>
 
@@ -61,6 +65,29 @@ export const CTA = () => {
                 </Button>
                 <p className="text-sm text-muted-foreground mt-4">
                   No obligation • Free consultation
+                </p>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="email">
+              <div className="bg-card rounded-2xl p-12 border border-border shadow-lg text-center">
+                <MailIcon className="h-16 w-16 mx-auto mb-6 text-primary" />
+                <h3 className="text-2xl font-bold mb-4">
+                  Email Us Directly
+                </h3>
+                <p className="text-base text-muted-foreground mb-8 max-w-md mx-auto">
+                  Prefer email? Send us a message and we'll get back to you within 24 hours.
+                </p>
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90"
+                  onClick={() => window.location.href = 'mailto:contact@agency.com'}
+                >
+                  Send Email
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <p className="text-sm text-muted-foreground mt-4">
+                  contact@agency.com
                 </p>
               </div>
             </TabsContent>

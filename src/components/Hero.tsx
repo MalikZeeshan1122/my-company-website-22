@@ -69,11 +69,26 @@ export const Hero = () => {
             We build cutting-edge digital solutions that help businesses scale. From web apps to mobile experiences, we turn your vision into reality.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
-            <Button size="lg" className="bg-primary hover:bg-primary/90 text-lg px-8">
+            <Button 
+              size="lg" 
+              className="bg-primary hover:bg-primary/90 text-lg px-8"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
               Start Your Project
               <ArrowRight className="ml-2 h-5 w-5" />
             </Button>
-            <Button size="lg" variant="outline" className="text-lg px-8">
+            <Button 
+              size="lg" 
+              variant="outline" 
+              className="text-lg px-8"
+              onClick={(e) => {
+                e.preventDefault();
+                document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
+              }}
+            >
               View Our Work
             </Button>
           </div>

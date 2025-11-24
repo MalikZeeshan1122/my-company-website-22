@@ -5,8 +5,36 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Briefcase, CheckCircle } from "lucide-react";
 import { ServiceTestimonial } from "@/components/ServiceTestimonial";
+import { ServiceFAQ } from "@/components/ServiceFAQ";
 
 const BusinessApps = () => {
+  const faqs = [
+    {
+      question: "How much does a custom business app cost?",
+      answer: "Business apps typically range from $15,000 to $75,000+ depending on complexity. Factors include number of user roles, integrations with existing systems, custom workflows, and data migration needs. We provide detailed quotes after understanding your specific requirements."
+    },
+    {
+      question: "How long does it take to build a business app?",
+      answer: "Most business apps take 8-16 weeks from kickoff to launch. Simple internal tools can be ready in 6-8 weeks, while complex CRMs with multiple integrations may take 12-16 weeks. We use agile development with weekly demos so you see progress continuously."
+    },
+    {
+      question: "Can you integrate with our existing tools (Salesforce, QuickBooks, etc.)?",
+      answer: "Yes! We specialize in integrating with popular business tools including Salesforce, QuickBooks, Stripe, Zapier, Google Workspace, Microsoft 365, and hundreds of other platforms. We can also build custom integrations for proprietary systems."
+    },
+    {
+      question: "What if our needs change after launch?",
+      answer: "We build apps to be flexible and scalable. All our projects include training and documentation. We offer ongoing support packages starting at $1,500/month that include updates, new features, and priority support as your business evolves."
+    },
+    {
+      question: "Do you handle data migration from our spreadsheets?",
+      answer: "Absolutely! Data migration is included in all business app projects. We'll extract, clean, and migrate your data from spreadsheets, legacy systems, or other databases. We also run parallel testing to ensure accuracy before going live."
+    },
+    {
+      question: "Will our team need technical training?",
+      answer: "We design apps to be intuitive, but we also provide comprehensive training. This includes video tutorials, written documentation, and live training sessions for your team. Most users are productive within 1-2 hours of training."
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -101,6 +129,8 @@ const BusinessApps = () => {
           label: "data accuracy"
         }}
       />
+
+      <ServiceFAQ faqs={faqs} />
 
       <CTA />
       <Footer />

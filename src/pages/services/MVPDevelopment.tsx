@@ -4,8 +4,36 @@ import { CTA } from "@/components/CTA";
 import { Card } from "@/components/ui/card";
 import { Rocket, CheckCircle } from "lucide-react";
 import { ServiceTestimonial } from "@/components/ServiceTestimonial";
+import { ServiceFAQ } from "@/components/ServiceFAQ";
 
 const MVPDevelopment = () => {
+  const faqs = [
+    {
+      question: "How much does an MVP cost?",
+      answer: "MVPs typically range from $15,000 to $50,000. A basic web app starts around $15-25K, while a mobile app with backend can reach $35-50K. We focus on core features only to keep costs low and get you to market fast."
+    },
+    {
+      question: "How long does it take to build an MVP?",
+      answer: "Most MVPs launch in 6-12 weeks. Simple web apps can be ready in 6-8 weeks, while mobile apps with complex features take 10-12 weeks. We use rapid prototyping and weekly demos to maintain momentum."
+    },
+    {
+      question: "What's included in an MVP?",
+      answer: "An MVP includes core features only: user authentication, primary workflow, basic admin dashboard, mobile-responsive design, and deployment. We intentionally exclude nice-to-have features to minimize cost and maximize learning speed."
+    },
+    {
+      question: "What happens after the MVP launches?",
+      answer: "Post-launch, we help you analyze user data and feedback. Based on what you learn, we can iterate quickly—adding features, adjusting UX, or pivoting direction. Most clients budget $5-10K/month for ongoing development after launch."
+    },
+    {
+      question: "Can we scale the MVP to a full product?",
+      answer: "Absolutely! We build MVPs with scalable architecture. When you're ready to grow, we add features, optimize performance, and expand infrastructure. Our MVPs have scaled from 100 to 100,000+ users without rebuilding."
+    },
+    {
+      question: "Will the MVP be investor-ready?",
+      answer: "Yes! We design MVPs to impress. This includes polished UI, working demos, and the ability to show traction with real users. Many of our clients have successfully raised funding (seed to Series A) using their MVPs."
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -122,6 +150,8 @@ const MVPDevelopment = () => {
           label: "improvement in payment processing"
         }}
       />
+
+      <ServiceFAQ faqs={faqs} />
 
       <CTA />
       <Footer />

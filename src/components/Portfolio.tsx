@@ -72,12 +72,24 @@ const projects = [
 
 export const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState<string>("All");
+  const [currentPage, setCurrentPage] = useState(1);
+  const projectsPerPage = 6;
 
   const categories = ["All", "AI Automation", "AI Agent", "Web App", "Mobile App", "E-Commerce"];
 
   const filteredProjects = activeFilter === "All" 
     ? projects 
     : projects.filter(project => project.category === activeFilter);
+
+  const totalPages = Math.ceil(filteredProjects.length / projectsPerPage);
+  const startIndex = (currentPage - 1) * projectsPerPage;
+  const endIndex = startIndex + projectsPerPage;
+  const displayedProjects = filteredProjects.slice(startIndex, endIndex);
+
+  const handleFilterChange = (category: string) => {
+    setActiveFilter(category);
+    setCurrentPage(1);
+  };
 
   return (
     <section id="work" className="py-24">
@@ -96,7 +108,7 @@ export const Portfolio = () => {
           {categories.map((category) => (
             <Button
               key={category}
-              onClick={() => setActiveFilter(category)}
+              onClick={() => handleFilterChange(category)}
               variant={activeFilter === category ? "default" : "outline"}
               className="transition-all duration-300 hover-scale"
             >
@@ -119,7 +131,7 @@ export const Portfolio = () => {
         </div>
 
         <div className="grid md:grid-cols-2 gap-8">
-          {filteredProjects.map((project, index) => (
+          {displayedProjects.map((project, index) => (
             <Card
               key={`${activeFilter}-${index}`}
               className="overflow-hidden hover-lift hover:shadow-xl transition-all duration-300 group cursor-pointer animate-fade-in"
@@ -148,6 +160,42 @@ export const Portfolio = () => {
             </Card>
           ))}
         </div>
+
+        {/* Pagination */}
+        {totalPages > 1 && (
+          <div className="flex justify-center items-center gap-2 mt-12">
+            <Button
+              variant="outline"
+              onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+              disabled={currentPage === 1}
+              className="transition-all duration-300"
+            >
+              Previous
+            </Button>
+            
+            <div className="flex gap-2">
+              {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+                <Button
+                  key={page}
+                  variant={currentPage === page ? "default" : "outline"}
+                  onClick={() => setCurrentPage(page)}
+                  className="w-10 h-10 transition-all duration-300"
+                >
+                  {page}
+                </Button>
+              ))}
+            </div>
+
+            <Button
+              variant="outline"
+              onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+              disabled={currentPage === totalPages}
+              className="transition-all duration-300"
+            >
+              Next
+            </Button>
+          </div>
+        )}
       </div>
     </section>
   );

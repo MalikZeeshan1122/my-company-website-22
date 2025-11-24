@@ -1,13 +1,16 @@
 import { Button } from "@/components/ui/button";
-import { Menu } from "lucide-react";
+import { Menu, Search } from "lucide-react";
 import { useState } from "react";
 import { ServicesMegaMenu } from "./ServicesMegaMenu";
+import { SearchDialog } from "./SearchDialog";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   return (
-    <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
+    <>
+      <nav className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-lg border-b border-border">
       <div className="container mx-auto px-4">
         <div className="flex items-center justify-between h-16">
           <div className="flex items-center">
@@ -18,6 +21,14 @@ export const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className="text-foreground/80 hover:text-foreground transition-colors"
+              aria-label="Search"
+            >
+              <Search className="h-5 w-5" />
+            </button>
+            
             <ServicesMegaMenu />
             
             <a href="/case-studies" className="text-foreground/80 hover:text-foreground transition-colors">
@@ -41,12 +52,20 @@ export const Navbar = () => {
           </div>
 
           {/* Mobile Menu Button */}
-          <button
-            className="md:hidden"
-            onClick={() => setIsMenuOpen(!isMenuOpen)}
-          >
-            <Menu className="h-6 w-6" />
-          </button>
+          <div className="flex items-center gap-3 md:hidden">
+            <button
+              onClick={() => setIsSearchOpen(true)}
+              className="text-foreground/80 hover:text-foreground transition-colors"
+              aria-label="Search"
+            >
+              <Search className="h-5 w-5" />
+            </button>
+            <button
+              onClick={() => setIsMenuOpen(!isMenuOpen)}
+            >
+              <Menu className="h-6 w-6" />
+            </button>
+          </div>
         </div>
 
         {/* Mobile Navigation */}
@@ -162,5 +181,8 @@ export const Navbar = () => {
         )}
       </div>
     </nav>
+    
+    <SearchDialog open={isSearchOpen} onOpenChange={setIsSearchOpen} />
+    </>
   );
 };

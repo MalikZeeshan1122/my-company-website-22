@@ -37,10 +37,14 @@ export const Services = () => {
         }`}
       >
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className={`text-4xl md:text-5xl font-bold mb-4 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             Services We Offer
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className={`text-xl text-muted-foreground transition-all duration-700 delay-200 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             End-to-end digital solutions tailored to your business needs
           </p>
         </div>

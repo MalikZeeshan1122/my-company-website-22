@@ -112,10 +112,14 @@ export const Portfolio = () => {
         }`}
       >
         <div className="max-w-3xl mx-auto text-center mb-16">
-          <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <h2 className={`text-4xl md:text-5xl font-bold mb-4 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             Our Latest Work
           </h2>
-          <p className="text-xl text-muted-foreground">
+          <p className={`text-xl text-muted-foreground transition-all duration-700 delay-200 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             Explore our portfolio of successful projects across various industries
           </p>
         </div>

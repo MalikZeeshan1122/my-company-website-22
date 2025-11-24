@@ -17,15 +17,21 @@ export const CTA = () => {
         }`}
       >
         <div className="max-w-4xl mx-auto text-center mb-12">
-          <h2 className="text-4xl md:text-5xl font-bold mb-6">
+          <h2 className={`text-4xl md:text-5xl font-bold mb-6 transition-all duration-700 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             Ready to Start Your Project?
           </h2>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
+          <p className={`text-xl text-muted-foreground max-w-2xl mx-auto transition-all duration-700 delay-200 ${
+            isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+          }`}>
             Let's work together to bring your vision to life. Choose how you'd like to connect with us.
           </p>
         </div>
 
-        <div className="max-w-3xl mx-auto">
+        <div className={`max-w-3xl mx-auto transition-all duration-700 delay-300 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}>
           <Tabs defaultValue="form" className="w-full">
             <TabsList className="grid w-full grid-cols-4 mb-8">
               <TabsTrigger value="form" className="text-sm md:text-base">

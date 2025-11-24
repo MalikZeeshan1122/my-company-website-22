@@ -18,6 +18,7 @@ import BusinessAutomation from "./pages/services/BusinessAutomation";
 import MVPDevelopment from "./pages/services/MVPDevelopment";
 import WebsiteDevelopment from "./pages/services/WebsiteDevelopment";
 import MobileApplications from "./pages/services/MobileApplications";
+import ContactSuccess from "./pages/ContactSuccess";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -42,6 +43,7 @@ const App = () => (
           <Route path="/services/website-development" element={<WebsiteDevelopment />} />
           <Route path="/services/mobile-applications" element={<MobileApplications />} />
           <Route path="/process" element={<Process />} />
+          <Route path="/contact-success" element={<ContactSuccess />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

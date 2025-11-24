@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { CTA } from "@/components/CTA";
 import { Card } from "@/components/ui/card";
 import { Code, CheckCircle } from "lucide-react";
+import { ServiceTestimonial } from "@/components/ServiceTestimonial";
 
 const WebsiteDevelopment = () => {
   return (
@@ -100,6 +101,21 @@ const WebsiteDevelopment = () => {
           </div>
         </div>
       </section>
+
+      <ServiceTestimonial
+        quote="August Point Advisors hired us to revamp their digital presence. In three weeks, we re-launched a website that drove an 85% increase in qualified leads and boosted newsletter signups by 127%."
+        author="August Point"
+        role="Managing Director"
+        company="August Point Advisors"
+        metric={{
+          value: "85%",
+          label: "increase in qualified leads"
+        }}
+        secondMetric={{
+          value: "127%",
+          label: "boost in newsletter signups"
+        }}
+      />
 
       <CTA />
       <Footer />

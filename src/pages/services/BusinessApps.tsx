@@ -4,6 +4,7 @@ import { CTA } from "@/components/CTA";
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Briefcase, CheckCircle } from "lucide-react";
+import { ServiceTestimonial } from "@/components/ServiceTestimonial";
 
 const BusinessApps = () => {
   return (
@@ -85,6 +86,21 @@ const BusinessApps = () => {
           </div>
         </div>
       </section>
+
+      <ServiceTestimonial
+        quote="From multiple spreadsheets to a dynamic, custom solution, with a unique drag and drop interface, saving 20 hours/week."
+        author="GL Hunt"
+        role="Operations Manager"
+        company="GL Hunt"
+        metric={{
+          value: "20hrs",
+          label: "saved per week"
+        }}
+        secondMetric={{
+          value: "100%",
+          label: "data accuracy"
+        }}
+      />
 
       <CTA />
       <Footer />

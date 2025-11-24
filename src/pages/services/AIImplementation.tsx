@@ -3,6 +3,7 @@ import { Footer } from "@/components/Footer";
 import { CTA } from "@/components/CTA";
 import { Card } from "@/components/ui/card";
 import { Brain, CheckCircle } from "lucide-react";
+import { ServiceTestimonial } from "@/components/ServiceTestimonial";
 
 const AIImplementation = () => {
   return (
@@ -79,6 +80,21 @@ const AIImplementation = () => {
           </div>
         </div>
       </section>
+
+      <ServiceTestimonial
+        quote="Using AI integration, we developed a solution that revolutionized shipment tracking in just 5 weeks and increased customer satisfaction by 30%."
+        author="Known.dev"
+        role="CTO"
+        company="Known.dev"
+        metric={{
+          value: "30%",
+          label: "increase in customer satisfaction"
+        }}
+        secondMetric={{
+          value: "5 weeks",
+          label: "to full implementation"
+        }}
+      />
 
       <CTA />
       <Footer />

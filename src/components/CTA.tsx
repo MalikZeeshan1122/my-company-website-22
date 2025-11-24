@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Calendar, Mail as MailIcon } from "lucide-react";
+import { ArrowRight, Calendar, Mail as MailIcon, MessageCircle } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { ContactForm } from "@/components/ContactForm";
+import { contactConfig } from "@/config/contacts";
 
 export const CTA = () => {
   const { ref, isVisible } = useScrollReveal();
@@ -26,17 +27,21 @@ export const CTA = () => {
 
         <div className="max-w-3xl mx-auto">
           <Tabs defaultValue="form" className="w-full">
-            <TabsList className="grid w-full grid-cols-3 mb-8">
-              <TabsTrigger value="form" className="text-base">
-                Contact Form
+            <TabsList className="grid w-full grid-cols-4 mb-8">
+              <TabsTrigger value="form" className="text-sm md:text-base">
+                Form
               </TabsTrigger>
-              <TabsTrigger value="calendar" className="text-base">
-                <Calendar className="mr-2 h-4 w-4" />
-                Schedule Call
+              <TabsTrigger value="calendar" className="text-sm md:text-base">
+                <Calendar className="mr-1 md:mr-2 h-4 w-4" />
+                <span className="hidden sm:inline">Schedule</span>
               </TabsTrigger>
-              <TabsTrigger value="email" className="text-base">
-                <MailIcon className="mr-2 h-4 w-4" />
-                Email Us
+              <TabsTrigger value="whatsapp" className="text-sm md:text-base">
+                <MessageCircle className="mr-1 md:mr-2 h-4 w-4" />
+                <span className="hidden sm:inline">WhatsApp</span>
+              </TabsTrigger>
+              <TabsTrigger value="email" className="text-sm md:text-base">
+                <MailIcon className="mr-1 md:mr-2 h-4 w-4" />
+                <span className="hidden sm:inline">Email</span>
               </TabsTrigger>
             </TabsList>
 
@@ -58,13 +63,36 @@ export const CTA = () => {
                 <Button
                   size="lg"
                   className="bg-primary hover:bg-primary/90"
-                  onClick={() => window.open("https://calendly.com", "_blank")}
+                  onClick={() => window.open(contactConfig.calendly, "_blank")}
                 >
                   Book a Call
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <p className="text-sm text-muted-foreground mt-4">
                   No obligation • Free consultation
+                </p>
+              </div>
+            </TabsContent>
+
+            <TabsContent value="whatsapp">
+              <div className="bg-card rounded-2xl p-12 border border-border shadow-lg text-center">
+                <MessageCircle className="h-16 w-16 mx-auto mb-6 text-primary" />
+                <h3 className="text-2xl font-bold mb-4">
+                  Chat on WhatsApp
+                </h3>
+                <p className="text-base text-muted-foreground mb-8 max-w-md mx-auto">
+                  Get instant responses to your questions. We're available on WhatsApp for quick consultations and project inquiries.
+                </p>
+                <Button
+                  size="lg"
+                  className="bg-primary hover:bg-primary/90"
+                  onClick={() => window.open(`https://wa.me/${contactConfig.whatsapp.replace(/[^0-9]/g, '')}?text=Hi! I'm interested in your services`, "_blank")}
+                >
+                  Start WhatsApp Chat
+                  <ArrowRight className="ml-2 h-5 w-5" />
+                </Button>
+                <p className="text-sm text-muted-foreground mt-4">
+                  {contactConfig.whatsapp}
                 </p>
               </div>
             </TabsContent>
@@ -81,13 +109,13 @@ export const CTA = () => {
                 <Button
                   size="lg"
                   className="bg-primary hover:bg-primary/90"
-                  onClick={() => window.location.href = 'mailto:contact@agency.com'}
+                  onClick={() => window.location.href = `mailto:${contactConfig.email}`}
                 >
                   Send Email
                   <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
                 <p className="text-sm text-muted-foreground mt-4">
-                  contact@agency.com
+                  {contactConfig.email}
                 </p>
               </div>
             </TabsContent>

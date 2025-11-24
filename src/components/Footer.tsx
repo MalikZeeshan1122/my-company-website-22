@@ -1,4 +1,5 @@
-import { Facebook, Twitter, Linkedin, Instagram, Mail } from "lucide-react";
+import { Facebook, Twitter, Linkedin, Instagram, Mail, MessageCircle } from "lucide-react";
+import { contactConfig } from "@/config/contacts";
 
 export const Footer = () => {
   return (
@@ -12,9 +13,9 @@ export const Footer = () => {
             </p>
             
             {/* Social Media Links */}
-            <div className="flex gap-3">
+            <div className="flex gap-3 flex-wrap">
               <a 
-                href="https://facebook.com" 
+                href={contactConfig.socialMedia.facebook}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="h-10 w-10 rounded-full bg-muted hover:bg-primary/10 flex items-center justify-center transition-colors group"
@@ -23,7 +24,7 @@ export const Footer = () => {
                 <Facebook className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
               </a>
               <a 
-                href="https://twitter.com" 
+                href={contactConfig.socialMedia.twitter}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="h-10 w-10 rounded-full bg-muted hover:bg-primary/10 flex items-center justify-center transition-colors group"
@@ -32,7 +33,7 @@ export const Footer = () => {
                 <Twitter className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
               </a>
               <a 
-                href="https://linkedin.com" 
+                href={contactConfig.socialMedia.linkedin}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="h-10 w-10 rounded-full bg-muted hover:bg-primary/10 flex items-center justify-center transition-colors group"
@@ -41,7 +42,7 @@ export const Footer = () => {
                 <Linkedin className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
               </a>
               <a 
-                href="https://instagram.com" 
+                href={contactConfig.socialMedia.instagram}
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="h-10 w-10 rounded-full bg-muted hover:bg-primary/10 flex items-center justify-center transition-colors group"
@@ -50,7 +51,16 @@ export const Footer = () => {
                 <Instagram className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
               </a>
               <a 
-                href="mailto:contact@agency.com"
+                href={`https://wa.me/${contactConfig.whatsapp.replace(/[^0-9]/g, '')}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="h-10 w-10 rounded-full bg-muted hover:bg-primary/10 flex items-center justify-center transition-colors group"
+                aria-label="WhatsApp"
+              >
+                <MessageCircle className="h-5 w-5 text-muted-foreground group-hover:text-primary transition-colors" />
+              </a>
+              <a 
+                href={`mailto:${contactConfig.email}`}
                 className="h-10 w-10 rounded-full bg-muted hover:bg-primary/10 flex items-center justify-center transition-colors group"
                 aria-label="Email"
               >

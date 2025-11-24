@@ -1,71 +1,79 @@
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Code, Smartphone, Palette, Lightbulb, Bot, Briefcase, Brain, Zap, Rocket } from "lucide-react";
 
-const services = [
-  {
-    icon: Code,
-    title: "Web Development",
-    description: "Custom web applications built with modern technologies for scalability and performance.",
-    color: "from-blue-500 to-cyan-500",
-    href: "/services/website-development"
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile Apps",
-    description: "Native and cross-platform mobile applications that deliver exceptional user experiences.",
-    color: "from-green-500 to-emerald-500",
-    href: "/services/mobile-applications"
-  },
-  {
-    icon: Palette,
-    title: "UI/UX Design",
-    description: "Beautiful, intuitive designs that put user experience at the forefront of every decision.",
-    color: "from-purple-500 to-pink-500",
-    href: "/services"
-  },
-  {
-    icon: Lightbulb,
-    title: "Digital Strategy",
-    description: "Strategic consulting to help you navigate the digital landscape and grow your business.",
-    color: "from-yellow-500 to-orange-500",
-    href: "/services"
-  },
-  {
-    icon: Bot,
-    title: "AI Automation & Agents",
-    description: "Intelligent automation solutions and AI agents that streamline workflows and enhance productivity.",
-    color: "from-indigo-500 to-violet-500",
-    href: "/services/ai-implementation"
-  },
+// For Businesses
+const businessServices = [
   {
     icon: Briefcase,
     title: "Business Apps",
-    description: "Custom CRMs, portals, and internal tools tailored to your business operations.",
+    description: "Custom CRMs, portals, and internal tools tailored to your operations",
     color: "from-cyan-500 to-blue-500",
-    href: "/services/business-apps"
+    href: "/services/business-apps",
+    category: "For Businesses"
   },
   {
     icon: Brain,
     title: "AI Implementation",
-    description: "Smart automation and AI agents that transform your workflows and reduce costs.",
+    description: "Smart automation and AI agents that transform your workflows",
     color: "from-pink-500 to-purple-500",
-    href: "/services/ai-implementation"
+    href: "/services/ai-implementation",
+    category: "For Businesses"
   },
   {
     icon: Zap,
     title: "Business Automation",
-    description: "Streamline repetitive tasks and integrate your existing tools for maximum efficiency.",
+    description: "Streamline repetitive tasks and integrate your existing tools",
     color: "from-orange-500 to-yellow-500",
-    href: "/services/business-automation"
+    href: "/services/business-automation",
+    category: "For Businesses"
   },
   {
     icon: Rocket,
-    title: "MVP Development",
-    description: "Launch your product idea quickly with investor-ready minimum viable products.",
+    title: "MVPs",
+    description: "Validate ideas quickly with production-ready minimum viable products",
     color: "from-red-500 to-pink-500",
-    href: "/services/mvp-development"
+    href: "/services/mvp-development",
+    category: "For Businesses"
+  },
+  {
+    icon: Code,
+    title: "Website Development",
+    description: "Modern, responsive websites that convert visitors to customers",
+    color: "from-blue-500 to-cyan-500",
+    href: "/services/website-development",
+    category: "For Businesses"
   }
 ];
+
+// For Startups
+const startupServices = [
+  {
+    icon: Smartphone,
+    title: "Mobile Applications",
+    description: "Native iOS and Android apps that engage and delight users",
+    color: "from-green-500 to-emerald-500",
+    href: "/services/mobile-applications",
+    category: "For Startups"
+  },
+  {
+    icon: Rocket,
+    title: "MVPs",
+    description: "Launch fast, learn faster with investor-ready prototypes",
+    color: "from-indigo-500 to-violet-500",
+    href: "/services/mvp-development",
+    category: "For Startups"
+  },
+  {
+    icon: Code,
+    title: "Website Development",
+    description: "Landing pages and web apps that establish your brand presence",
+    color: "from-purple-500 to-pink-500",
+    href: "/services/website-development",
+    category: "For Startups"
+  }
+];
+
+const services = [...businessServices, ...startupServices];
 
 export const ServicesGrid = () => {
   // Duplicate services for infinite scroll effect

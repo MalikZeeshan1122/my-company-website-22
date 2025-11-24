@@ -18,6 +18,10 @@ export const Navbar = () => {
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-8">
+            <a href="/about" className="text-foreground/80 hover:text-foreground transition-colors">
+              About
+            </a>
+            
             <ServicesMegaMenu />
             
             <a href="/case-studies" className="text-foreground/80 hover:text-foreground transition-colors">
@@ -28,9 +32,6 @@ export const Navbar = () => {
               Our process
             </a>
             
-            <a href="/about" className="text-foreground/80 hover:text-foreground transition-colors">
-              About
-            </a>
             <a href="#contact" className="text-foreground/80 hover:text-foreground transition-colors">
               Contact
             </a>
@@ -51,6 +52,14 @@ export const Navbar = () => {
         {/* Mobile Navigation */}
           {isMenuOpen && (
           <div className="md:hidden py-4 space-y-3 animate-fade-in">
+            <a
+              href="/about"
+              className="block text-foreground/80 hover:text-foreground transition-colors"
+              onClick={() => setIsMenuOpen(false)}
+            >
+              About
+            </a>
+            
             <div className="space-y-2">
               <div className="text-foreground/80 font-medium px-0">Services</div>
               <div className="pl-4 space-y-2">
@@ -139,13 +148,6 @@ export const Navbar = () => {
               onClick={() => setIsMenuOpen(false)}
             >
               Our process
-            </a>
-            <a
-              href="/about"
-              className="block text-foreground/80 hover:text-foreground transition-colors"
-              onClick={() => setIsMenuOpen(false)}
-            >
-              About
             </a>
             <a
               href="#contact"

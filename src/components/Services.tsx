@@ -1,5 +1,5 @@
 import { Card } from "@/components/ui/card";
-import { Code2, Smartphone, Palette, Zap } from "lucide-react";
+import { Code2, Smartphone, Palette, Bot } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
 
 const services = [
@@ -19,9 +19,9 @@ const services = [
     description: "Beautiful, intuitive designs that put user experience at the forefront of every decision.",
   },
   {
-    icon: Zap,
-    title: "Digital Strategy",
-    description: "Strategic consulting to help you navigate the digital landscape and grow your business.",
+    icon: Bot,
+    title: "AI Automation & Agents",
+    description: "Intelligent automation solutions and AI agents that streamline workflows and transform your business.",
   },
 ];
 

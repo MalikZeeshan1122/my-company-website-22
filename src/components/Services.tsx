@@ -1,6 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Code2, Smartphone, Palette, Bot } from "lucide-react";
 import { useScrollReveal } from "@/hooks/useScrollReveal";
+import { useTiltEffect } from "@/hooks/useTiltEffect";
 
 const services = [
   {
@@ -25,14 +26,50 @@ const services = [
   },
 ];
 
+const ServiceCard = ({ service, index, isVisible }: { service: any; index: number; isVisible: boolean }) => {
+  const tiltRef = useTiltEffect(10);
+
+  return (
+    <Card
+      ref={tiltRef}
+      className={`p-6 hover-lift hover:shadow-xl transition-all duration-300 border-border/50 bg-card group relative overflow-hidden ${
+        isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+      }`}
+      style={{ 
+        transitionDelay: `${index * 150}ms`,
+        transitionDuration: '700ms',
+        transformStyle: 'preserve-3d'
+      }}
+    >
+      {/* Animated gradient background on hover */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+      
+      <div className="relative z-10">
+        <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
+          <service.icon className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300" />
+        </div>
+        <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-300">
+          {service.title}
+        </h3>
+        <p className="text-base text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
+          {service.description}
+        </p>
+      </div>
+    </Card>
+  );
+};
+
 export const Services = () => {
   const { ref, isVisible } = useScrollReveal();
 
   return (
-    <section id="services" className="py-24 bg-muted/30">
+    <section id="services" className="py-24 bg-muted/30 relative overflow-hidden">
+      {/* Animated gradient background */}
+      <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-background to-primary/10 animate-gradient"></div>
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_30%_50%,hsl(var(--primary)/0.1),transparent_50%)] animate-pulse"></div>
       <div 
         ref={ref}
-        className={`container mx-auto px-4 transition-all duration-1000 ${
+        className={`container mx-auto px-4 transition-all duration-1000 relative z-10 ${
           isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
         }`}
       >
@@ -51,31 +88,7 @@ export const Services = () => {
 
         <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
           {services.map((service, index) => (
-            <Card
-              key={index}
-              className={`p-6 hover-lift hover:shadow-xl transition-all duration-300 border-border/50 bg-card group relative overflow-hidden ${
-                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
-              }`}
-              style={{ 
-                transitionDelay: `${index * 150}ms`,
-                transitionDuration: '700ms'
-              }}
-            >
-              {/* Animated gradient background on hover */}
-              <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
-              
-              <div className="relative z-10">
-                <div className="h-12 w-12 rounded-lg bg-primary/10 flex items-center justify-center mb-4 group-hover:bg-primary/20 group-hover:scale-110 group-hover:rotate-6 transition-all duration-300">
-                  <service.icon className="h-6 w-6 text-primary group-hover:scale-110 transition-transform duration-300" />
-                </div>
-                <h3 className="text-xl font-semibold mb-2 group-hover:text-primary transition-colors duration-300">
-                  {service.title}
-                </h3>
-                <p className="text-base text-muted-foreground group-hover:text-foreground/80 transition-colors duration-300">
-                  {service.description}
-                </p>
-              </div>
-            </Card>
+            <ServiceCard key={index} service={service} index={index} isVisible={isVisible} />
           ))}
         </div>
       </div>

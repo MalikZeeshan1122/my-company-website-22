@@ -96,6 +96,11 @@ All colors MUST be HSL.
 }
 
 @layer utilities {
+  /* Hide default cursor */
+  * {
+    cursor: none !important;
+  }
+
   .text-gradient {
     @apply bg-gradient-to-r from-primary to-primary/80 bg-clip-text text-transparent;
   }

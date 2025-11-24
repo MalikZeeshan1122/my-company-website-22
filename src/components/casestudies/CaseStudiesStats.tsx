@@ -36,23 +36,23 @@ const stats = [
 export const CaseStudiesStats = () => {
   return (
     <>
-      <section className="py-24 px-4">
+      <section className="py-16 px-4">
         <div className="container mx-auto">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-3">
               Cracking the code
             </h2>
-            <p className="text-xl text-muted-foreground">By the numbers</p>
+            <p className="text-lg text-muted-foreground">By the numbers</p>
           </div>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-12 max-w-6xl mx-auto">
+          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
             {stats.map((stat, index) => (
               <div key={index} className="text-center">
-                <div className="text-5xl md:text-6xl font-bold text-gradient mb-2">
+                <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">
                   {stat.value}
                 </div>
-                <div className="text-xl font-semibold mb-1">{stat.label}</div>
-                <div className="text-muted-foreground">{stat.description}</div>
+                <div className="text-lg font-semibold mb-1">{stat.label}</div>
+                <div className="text-sm text-muted-foreground">{stat.description}</div>
               </div>
             ))}
           </div>

@@ -4,8 +4,36 @@ import { CTA } from "@/components/CTA";
 import { Card } from "@/components/ui/card";
 import { Smartphone, CheckCircle } from "lucide-react";
 import { ServiceTestimonial } from "@/components/ServiceTestimonial";
+import { ServiceFAQ } from "@/components/ServiceFAQ";
 
 const MobileApplications = () => {
+  const faqs = [
+    {
+      question: "How much does a mobile app cost?",
+      answer: "Mobile apps range from $25,000 to $150,000+. Cross-platform apps start around $25-40K, while native iOS and Android apps begin at $40-60K each. Complex apps with backend infrastructure can exceed $100K. We provide detailed quotes after scoping."
+    },
+    {
+      question: "Should I build native or cross-platform?",
+      answer: "Cross-platform (React Native/Flutter) is best for faster launch and lower cost—one codebase for iOS and Android. Native (Swift/Kotlin) is better when you need maximum performance or platform-specific features. We'll recommend the right approach for your needs."
+    },
+    {
+      question: "How long does it take to build a mobile app?",
+      answer: "Most mobile apps take 12-20 weeks. Simple apps can launch in 10-12 weeks, while complex apps with custom features take 16-20 weeks. We use agile development with bi-weekly TestFlight/beta builds for continuous feedback."
+    },
+    {
+      question: "Will you handle App Store and Google Play submissions?",
+      answer: "Yes! We handle all app store submissions including preparing assets, writing descriptions, and managing the review process. We'll also guide you through the approval process and help with rejections if they occur."
+    },
+    {
+      question: "How do you handle app updates and maintenance?",
+      answer: "We offer maintenance packages starting at $2,000/month covering bug fixes, OS updates, security patches, and minor features. Major feature releases are priced separately. We also provide 60 days of free support post-launch."
+    },
+    {
+      question: "Can you add features after launch?",
+      answer: "Absolutely! We build apps with scalable architecture. Post-launch, we can add new features, integrations, or improvements. Most clients budget $5-15K/month for ongoing development as they grow and learn from users."
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -136,6 +164,8 @@ const MobileApplications = () => {
           label: "migration timeline"
         }}
       />
+
+      <ServiceFAQ faqs={faqs} />
 
       <CTA />
       <Footer />

@@ -4,8 +4,36 @@ import { CTA } from "@/components/CTA";
 import { Card } from "@/components/ui/card";
 import { Code, CheckCircle } from "lucide-react";
 import { ServiceTestimonial } from "@/components/ServiceTestimonial";
+import { ServiceFAQ } from "@/components/ServiceFAQ";
 
 const WebsiteDevelopment = () => {
+  const faqs = [
+    {
+      question: "How much does a website cost?",
+      answer: "Websites range from $5,000 to $50,000+. Landing pages start around $5-8K, marketing websites at $10-20K, and complex web applications at $30-50K+. We provide fixed-price quotes after understanding your requirements and goals."
+    },
+    {
+      question: "How long does it take to build a website?",
+      answer: "Most websites launch in 3-8 weeks. Landing pages can be ready in 2-3 weeks, full marketing websites in 4-6 weeks, and complex web apps in 6-8 weeks. Rush timelines available for urgent launches."
+    },
+    {
+      question: "Will my website be mobile-friendly?",
+      answer: "Yes! All websites are mobile-first and responsive. With 70% of traffic on mobile, we design for small screens first, then scale up. Your site will look perfect on phones, tablets, and desktops."
+    },
+    {
+      question: "Can I update the website content myself?",
+      answer: "Absolutely! We include a user-friendly CMS (Webflow, WordPress, or custom) that lets you edit text, images, and pages without coding. We provide training and documentation so you're self-sufficient."
+    },
+    {
+      question: "Will my website rank on Google?",
+      answer: "We build all websites with SEO best practices: semantic HTML, fast load times, mobile optimization, meta tags, and structured data. For competitive keywords, we offer ongoing SEO services starting at $1,500/month."
+    },
+    {
+      question: "What about hosting and maintenance?",
+      answer: "We can host your website ($50-200/month depending on traffic) or help you set up your own hosting. We offer maintenance packages ($250-1,000/month) including updates, backups, security monitoring, and content changes."
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -116,6 +144,8 @@ const WebsiteDevelopment = () => {
           label: "boost in newsletter signups"
         }}
       />
+
+      <ServiceFAQ faqs={faqs} />
 
       <CTA />
       <Footer />

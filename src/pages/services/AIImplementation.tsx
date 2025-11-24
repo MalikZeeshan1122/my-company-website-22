@@ -4,8 +4,36 @@ import { CTA } from "@/components/CTA";
 import { Card } from "@/components/ui/card";
 import { Brain, CheckCircle } from "lucide-react";
 import { ServiceTestimonial } from "@/components/ServiceTestimonial";
+import { ServiceFAQ } from "@/components/ServiceFAQ";
 
 const AIImplementation = () => {
+  const faqs = [
+    {
+      question: "How much does AI implementation cost?",
+      answer: "AI implementation projects typically range from $20,000 to $100,000+ depending on complexity. Simple chatbots start around $20K, while complex document processing with custom models can exceed $75K. Most clients see ROI within 6-12 months through reduced labor costs."
+    },
+    {
+      question: "How long does it take to implement AI?",
+      answer: "Most AI implementations take 6-12 weeks. Simple chatbots can launch in 4-6 weeks, while complex systems with custom training and integrations take 10-14 weeks. We start with a proof of concept to validate accuracy before full deployment."
+    },
+    {
+      question: "What AI models do you use?",
+      answer: "We use the best model for your use case: OpenAI GPT-4/GPT-5 for general intelligence, Claude for nuanced reasoning, Gemini for multimodal tasks, and specialized models for specific domains. We can also fine-tune models on your data for better accuracy."
+    },
+    {
+      question: "Will AI replace our employees?",
+      answer: "No, AI augments your team rather than replacing them. It handles repetitive tasks, allowing your employees to focus on high-value work requiring human judgment. Most clients redeploy staff to strategic roles rather than reducing headcount."
+    },
+    {
+      question: "How accurate is AI, and what if it makes mistakes?",
+      answer: "We aim for 95%+ accuracy through careful prompt engineering, testing, and validation. For critical use cases, we implement human-in-the-loop review workflows. We also provide confidence scores and audit trails for all AI decisions."
+    },
+    {
+      question: "Is our data secure with AI?",
+      answer: "Yes. We use enterprise AI APIs with SOC 2 compliance and don't send data to train public models. Your data is encrypted in transit and at rest. For sensitive applications, we can deploy private AI models on your infrastructure."
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -95,6 +123,8 @@ const AIImplementation = () => {
           label: "to full implementation"
         }}
       />
+
+      <ServiceFAQ faqs={faqs} />
 
       <CTA />
       <Footer />

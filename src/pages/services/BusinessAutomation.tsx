@@ -4,8 +4,36 @@ import { CTA } from "@/components/CTA";
 import { Card } from "@/components/ui/card";
 import { Zap, CheckCircle } from "lucide-react";
 import { ServiceTestimonial } from "@/components/ServiceTestimonial";
+import { ServiceFAQ } from "@/components/ServiceFAQ";
 
 const BusinessAutomation = () => {
+  const faqs = [
+    {
+      question: "How much does business automation cost?",
+      answer: "Automation projects typically range from $5,000 to $40,000. Simple email automations start around $5K, while complex multi-system workflows with custom logic can reach $30-40K. Most projects ROI within 3-6 months through time savings."
+    },
+    {
+      question: "How long does it take to implement automation?",
+      answer: "Most automation projects launch in 2-6 weeks. Simple workflows can be live in 1-2 weeks, while complex integrations across multiple systems take 4-6 weeks. We prioritize high-impact automations first so you see benefits immediately."
+    },
+    {
+      question: "What tools and systems can you automate?",
+      answer: "We automate across 1000+ platforms including Salesforce, HubSpot, QuickBooks, Slack, Gmail, Stripe, Shopify, and more. If a platform has an API, we can automate it. We also build custom integrations for proprietary systems."
+    },
+    {
+      question: "What happens if an automation breaks?",
+      answer: "We include monitoring and error handling in all automations. You'll receive instant alerts if something fails, and we provide 30 days of free support post-launch. Ongoing maintenance packages start at $500/month for peace of mind."
+    },
+    {
+      question: "How much time will we actually save?",
+      answer: "Most clients save 15-25 hours per week after automation. We conduct a process audit before starting to identify high-ROI opportunities. We prioritize automations that save the most time and reduce the most errors first."
+    },
+    {
+      question: "Can we modify automations ourselves later?",
+      answer: "Yes! We provide full documentation and training. For no-code tools like Zapier, your team can make simple changes. For custom code, we offer training or ongoing support packages where we handle modifications."
+    }
+  ];
+
   return (
     <div className="min-h-screen">
       <Navbar />
@@ -103,6 +131,8 @@ const BusinessAutomation = () => {
           label: "to implementation"
         }}
       />
+
+      <ServiceFAQ faqs={faqs} />
 
       <CTA />
       <Footer />

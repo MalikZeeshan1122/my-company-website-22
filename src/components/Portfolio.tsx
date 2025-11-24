@@ -1,7 +1,7 @@
 import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-import { useState } from "react";
+import { useState, useEffect, useRef } from "react";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
@@ -74,6 +74,7 @@ export const Portfolio = () => {
   const [activeFilter, setActiveFilter] = useState<string>("All");
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 6;
+  const sectionRef = useRef<HTMLElement>(null);
 
   const categories = ["All", "AI Automation", "AI Agent", "Web App", "Mobile App", "E-Commerce"];
 
@@ -91,8 +92,17 @@ export const Portfolio = () => {
     setCurrentPage(1);
   };
 
+  const handlePageChange = (page: number) => {
+    setCurrentPage(page);
+    sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  useEffect(() => {
+    sectionRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [currentPage]);
+
   return (
-    <section id="work" className="py-24">
+    <section id="work" className="py-24" ref={sectionRef}>
       <div className="container mx-auto px-4">
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
@@ -166,7 +176,7 @@ export const Portfolio = () => {
           <div className="flex justify-center items-center gap-2 mt-12">
             <Button
               variant="outline"
-              onClick={() => setCurrentPage(prev => Math.max(1, prev - 1))}
+              onClick={() => handlePageChange(Math.max(1, currentPage - 1))}
               disabled={currentPage === 1}
               className="transition-all duration-300"
             >
@@ -178,7 +188,7 @@ export const Portfolio = () => {
                 <Button
                   key={page}
                   variant={currentPage === page ? "default" : "outline"}
-                  onClick={() => setCurrentPage(page)}
+                  onClick={() => handlePageChange(page)}
                   className="w-10 h-10 transition-all duration-300"
                 >
                   {page}
@@ -188,7 +198,7 @@ export const Portfolio = () => {
 
             <Button
               variant="outline"
-              onClick={() => setCurrentPage(prev => Math.min(totalPages, prev + 1))}
+              onClick={() => handlePageChange(Math.min(totalPages, currentPage + 1))}
               disabled={currentPage === totalPages}
               className="transition-all duration-300"
             >

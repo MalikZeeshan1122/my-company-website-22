@@ -7,10 +7,10 @@ export const AboutHero = () => {
             About <span className="text-gradient">Us</span>
           </h1>
           
-          <div className="space-y-8 text-lg text-muted-foreground">
+          <div className="space-y-8 text-base text-muted-foreground">
             <div>
               <h2 className="text-3xl font-bold text-foreground mb-4">Who are we?</h2>
-              <p className="text-xl font-semibold text-foreground mb-4">
+              <p className="text-lg font-semibold text-foreground mb-4">
                 We're a leader in Low-Code/No-Code digital transformation
               </p>
               <p>

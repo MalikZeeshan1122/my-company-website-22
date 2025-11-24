@@ -55,7 +55,7 @@ export const Testimonials = () => {
                   <Star key={i} className="h-5 w-5 fill-primary text-primary" />
                 ))}
               </div>
-              <p className="text-muted-foreground mb-6 italic">
+              <p className="text-base text-muted-foreground mb-6 italic">
                 "{testimonial.content}"
               </p>
               <div className="flex items-center gap-3">

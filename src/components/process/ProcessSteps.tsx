@@ -102,15 +102,15 @@ export const ProcessSteps = () => {
                       <h3 className="text-3xl font-bold">{step.title}</h3>
                     </div>
                     
-                    <p className="text-xl text-muted-foreground mb-4">{step.subtitle}</p>
+                    <p className="text-lg text-muted-foreground mb-4">{step.subtitle}</p>
                     
-                    <p className="text-lg mb-6">{step.description}</p>
+                    <p className="text-base mb-6">{step.description}</p>
                     
                     <div className="space-y-3 mb-6">
                       {step.features.map((feature, i) => (
                         <div key={i} className="flex gap-3">
                           <div className="w-2 h-2 rounded-full bg-primary mt-2 flex-shrink-0" />
-                          <p className="text-foreground/90">{feature}</p>
+                          <p className="text-base text-foreground/90">{feature}</p>
                         </div>
                       ))}
                     </div>

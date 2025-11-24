@@ -48,7 +48,7 @@ export const CTA = () => {
                 <h3 className="text-2xl font-bold mb-4">
                   Schedule a Consultation
                 </h3>
-                <p className="text-muted-foreground mb-8 max-w-md mx-auto">
+                <p className="text-base text-muted-foreground mb-8 max-w-md mx-auto">
                   Book a 30-minute discovery call to discuss your project requirements and how we can help you succeed.
                 </p>
                 <Button

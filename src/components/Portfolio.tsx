@@ -165,7 +165,7 @@ export const Portfolio = () => {
               <div className="p-6">
                 <Badge className="mb-3">{project.category}</Badge>
                 <h3 className="text-2xl font-semibold mb-2">{project.title}</h3>
-                <p className="text-muted-foreground mb-4">{project.description}</p>
+                <p className="text-base text-muted-foreground mb-4">{project.description}</p>
                 <div className="flex flex-wrap gap-2">
                   {project.tags.map((tag, tagIndex) => (
                     <Badge key={tagIndex} variant="outline">

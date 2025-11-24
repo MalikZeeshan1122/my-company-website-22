@@ -89,10 +89,10 @@ export const CaseStudiesGrid = () => {
     : caseStudies.filter(study => study.categories.includes(activeCategory));
 
   return (
-    <section className="py-16 px-4 bg-muted/30">
+    <section className="py-20 px-4 bg-muted/30">
       <div className="container mx-auto">
         {/* Filter Buttons */}
-        <div className="flex flex-wrap gap-3 mb-12 justify-center">
+        <div className="flex flex-wrap gap-3 mb-16 justify-center">
           {categories.map((category) => (
             <Button
               key={category}
@@ -106,7 +106,7 @@ export const CaseStudiesGrid = () => {
         </div>
 
         {/* Case Studies Grid */}
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 max-w-7xl mx-auto">
           {filteredStudies.map((study, index) => (
             <Card
               key={index}
@@ -127,11 +127,11 @@ export const CaseStudiesGrid = () => {
                     </Badge>
                   ))}
                 </div>
-                <h3 className="text-xl font-semibold mb-3">{study.title}</h3>
-                <p className="text-muted-foreground text-sm mb-4 line-clamp-4">
+                <h3 className="text-lg font-semibold mb-2">{study.title}</h3>
+                <p className="text-muted-foreground text-sm mb-4 line-clamp-3">
                   {study.description}
                 </p>
-                <Button variant="ghost" className="p-0 h-auto group/btn">
+                <Button variant="ghost" className="p-0 h-auto group/btn text-sm">
                   Read case study
                   <ArrowRight className="ml-2 h-4 w-4 transition-transform group-hover/btn:translate-x-1" />
                 </Button>

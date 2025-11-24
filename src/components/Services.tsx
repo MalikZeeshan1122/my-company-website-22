@@ -49,7 +49,13 @@ export const Services = () => {
           {services.map((service, index) => (
             <Card
               key={index}
-              className="p-6 hover-lift hover:shadow-xl transition-all duration-300 border-border/50 bg-card group relative overflow-hidden"
+              className={`p-6 hover-lift hover:shadow-xl transition-all duration-300 border-border/50 bg-card group relative overflow-hidden ${
+                isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+              }`}
+              style={{ 
+                transitionDelay: `${index * 150}ms`,
+                transitionDuration: '700ms'
+              }}
             >
               {/* Animated gradient background on hover */}
               <div className="absolute inset-0 bg-gradient-to-br from-primary/5 via-transparent to-primary/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />

@@ -121,8 +121,9 @@ export const Portfolio = () => {
         <div className="grid md:grid-cols-2 gap-8">
           {filteredProjects.map((project, index) => (
             <Card
-              key={index}
+              key={`${activeFilter}-${index}`}
               className="overflow-hidden hover-lift hover:shadow-xl transition-all duration-300 group cursor-pointer animate-fade-in"
+              style={{ animationDelay: `${index * 100}ms` }}
             >
               <div className="relative overflow-hidden aspect-[4/3]">
                 <img

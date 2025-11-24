@@ -115,6 +115,10 @@ All colors MUST be HSL.
   .animate-scroll {
     animation: scroll 40s linear infinite;
   }
+
+  .animate-scroll:hover {
+    animation-play-state: paused;
+  }
 }
 
 @keyframes fade-in {
@@ -134,5 +138,14 @@ All colors MUST be HSL.
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(calc(-400px * 9 - 1.5rem * 9));
   }
 }

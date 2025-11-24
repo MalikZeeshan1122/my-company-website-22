@@ -1,15 +1,7 @@
 import { Button } from "@/components/ui/button";
-import {
-  DropdownMenu,
-  DropdownMenuContent,
-  DropdownMenuGroup,
-  DropdownMenuItem,
-  DropdownMenuLabel,
-  DropdownMenuSeparator,
-  DropdownMenuTrigger,
-} from "@/components/ui/dropdown-menu";
-import { Menu, ChevronDown } from "lucide-react";
+import { Menu } from "lucide-react";
 import { useState } from "react";
+import { ServicesMegaMenu } from "./ServicesMegaMenu";
 
 export const Navbar = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
@@ -30,57 +22,7 @@ export const Navbar = () => {
               Our process
             </a>
             
-            <DropdownMenu>
-              <DropdownMenuTrigger className="flex items-center gap-1 text-foreground/80 hover:text-foreground transition-colors outline-none">
-                Services
-                <ChevronDown className="h-4 w-4" />
-              </DropdownMenuTrigger>
-              <DropdownMenuContent className="w-80 z-[100] bg-background" align="start">
-                <div className="px-2 py-3">
-                  <DropdownMenuLabel className="text-base font-bold">For Businesses</DropdownMenuLabel>
-                  <p className="text-xs text-muted-foreground mt-1 mb-3 px-2">
-                    Custom software to streamline operations, from internal tools and CRMs to AI-powered automation.
-                  </p>
-                </div>
-                <DropdownMenuGroup>
-                  <DropdownMenuItem asChild>
-                    <a href="/services" className="cursor-pointer">Business Apps</a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <a href="/services" className="cursor-pointer">AI Implementation</a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <a href="/services" className="cursor-pointer">Business Automation</a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <a href="/services" className="cursor-pointer">MVPs</a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <a href="/services" className="cursor-pointer">Website Development</a>
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-                
-                <DropdownMenuSeparator />
-                
-                <div className="px-2 py-3">
-                  <DropdownMenuLabel className="text-base font-bold">For Startups</DropdownMenuLabel>
-                  <p className="text-xs text-muted-foreground mt-1 mb-3 px-2">
-                    From idea to launch. We build the high-impact digital products that define your vision.
-                  </p>
-                </div>
-                <DropdownMenuGroup>
-                  <DropdownMenuItem asChild>
-                    <a href="/services" className="cursor-pointer">Mobile Applications</a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <a href="/services" className="cursor-pointer">MVPs</a>
-                  </DropdownMenuItem>
-                  <DropdownMenuItem asChild>
-                    <a href="/services" className="cursor-pointer">Website Development</a>
-                  </DropdownMenuItem>
-                </DropdownMenuGroup>
-              </DropdownMenuContent>
-            </DropdownMenu>
+            <ServicesMegaMenu />
             
             <a href="/case-studies" className="text-foreground/80 hover:text-foreground transition-colors">
               Case Studies

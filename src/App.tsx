@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { BackToTop } from "@/components/BackToTop";
 import { ScrollProgress } from "@/components/ScrollProgress";
+import { SettingsProvider } from "@/context/SettingsContext";
 import Index from "./pages/Index";
 import About from "./pages/About";
 import CaseStudies from "./pages/CaseStudies";
@@ -26,11 +27,12 @@ const queryClient = new QueryClient();
 
 const App = () => (
   <QueryClientProvider client={queryClient}>
-    <TooltipProvider>
-      <Toaster />
-      <Sonner />
-      <ScrollProgress />
-      <BrowserRouter>
+    <SettingsProvider>
+      <TooltipProvider>
+        <Toaster />
+        <Sonner />
+        <ScrollProgress />
+        <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/about" element={<About />} />
@@ -52,7 +54,8 @@ const App = () => (
         <ChatWidget />
         <BackToTop />
       </BrowserRouter>
-    </TooltipProvider>
+      </TooltipProvider>
+    </SettingsProvider>
   </QueryClientProvider>
 );
 

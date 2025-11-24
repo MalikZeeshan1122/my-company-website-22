@@ -2,6 +2,7 @@ import { Card } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import { useState, useEffect, useRef } from "react";
+import { useScrollReveal } from "@/hooks/useScrollReveal";
 import project1 from "@/assets/project-1.jpg";
 import project2 from "@/assets/project-2.jpg";
 import project3 from "@/assets/project-3.jpg";
@@ -75,6 +76,7 @@ export const Portfolio = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const projectsPerPage = 6;
   const sectionRef = useRef<HTMLElement>(null);
+  const { ref: revealRef, isVisible } = useScrollReveal();
 
   const categories = ["All", "AI Automation", "AI Agent", "Web App", "Mobile App", "E-Commerce"];
 
@@ -103,7 +105,12 @@ export const Portfolio = () => {
 
   return (
     <section id="work" className="py-24" ref={sectionRef}>
-      <div className="container mx-auto px-4">
+      <div 
+        ref={revealRef}
+        className={`container mx-auto px-4 transition-all duration-1000 ${
+          isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-10'
+        }`}
+      >
         <div className="max-w-3xl mx-auto text-center mb-16">
           <h2 className="text-4xl md:text-5xl font-bold mb-4">
             Our Latest Work

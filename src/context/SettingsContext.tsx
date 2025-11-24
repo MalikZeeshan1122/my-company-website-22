@@ -1,5 +1,4 @@
 import { createContext, useContext, useState, ReactNode, useEffect } from "react";
-import { toast } from "@/hooks/use-toast";
 
 interface SettingsContextType {
   useVideo: boolean;

@@ -14,6 +14,68 @@ export type Database = {
   }
   public: {
     Tables: {
+      chat_messages: {
+        Row: {
+          content: string
+          created_at: string
+          id: string
+          sender_name: string
+          sender_type: Database["public"]["Enums"]["message_sender_type"]
+          session_id: string
+        }
+        Insert: {
+          content: string
+          created_at?: string
+          id?: string
+          sender_name: string
+          sender_type: Database["public"]["Enums"]["message_sender_type"]
+          session_id: string
+        }
+        Update: {
+          content?: string
+          created_at?: string
+          id?: string
+          sender_name?: string
+          sender_type?: Database["public"]["Enums"]["message_sender_type"]
+          session_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "chat_messages_session_id_fkey"
+            columns: ["session_id"]
+            isOneToOne: false
+            referencedRelation: "chat_sessions"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
+      chat_sessions: {
+        Row: {
+          created_at: string
+          id: string
+          status: Database["public"]["Enums"]["chat_status"]
+          updated_at: string
+          visitor_email: string
+          visitor_name: string
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          status?: Database["public"]["Enums"]["chat_status"]
+          updated_at?: string
+          visitor_email: string
+          visitor_name: string
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          status?: Database["public"]["Enums"]["chat_status"]
+          updated_at?: string
+          visitor_email?: string
+          visitor_name?: string
+        }
+        Relationships: []
+      }
       contact_submissions: {
         Row: {
           attachments: Json | null
@@ -59,15 +121,41 @@ export type Database = {
         }
         Relationships: []
       }
+      user_roles: {
+        Row: {
+          id: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Insert: {
+          id?: string
+          role: Database["public"]["Enums"]["app_role"]
+          user_id: string
+        }
+        Update: {
+          id?: string
+          role?: Database["public"]["Enums"]["app_role"]
+          user_id?: string
+        }
+        Relationships: []
+      }
     }
     Views: {
       [_ in never]: never
     }
     Functions: {
-      [_ in never]: never
+      has_role: {
+        Args: {
+          _role: Database["public"]["Enums"]["app_role"]
+          _user_id: string
+        }
+        Returns: boolean
+      }
     }
     Enums: {
-      [_ in never]: never
+      app_role: "admin" | "support" | "user"
+      chat_status: "open" | "in_progress" | "closed"
+      message_sender_type: "visitor" | "support"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -194,6 +282,10 @@ export type CompositeTypes<
 
 export const Constants = {
   public: {
-    Enums: {},
+    Enums: {
+      app_role: ["admin", "support", "user"],
+      chat_status: ["open", "in_progress", "closed"],
+      message_sender_type: ["visitor", "support"],
+    },
   },
 } as const

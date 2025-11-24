@@ -9,39 +9,39 @@ export const CaseStudiesTestimonial = () => {
         <Card className="p-8 md:p-10">
           <div className="flex items-start gap-4 mb-6">
             <Badge className="bg-primary/10 text-primary border-primary/20">
-              MVP Development
+              AI Automation
             </Badge>
           </div>
           
           <Quote className="h-10 w-10 text-primary/20 mb-4" />
           
           <blockquote className="text-lg md:text-xl font-medium mb-6">
-            We are thrilled with the MaidManage app and the exceptional team at LowCode Agency. It has been a great experience, and we look forward to bringing more app ideas to life with you.
+            The AI automation agents completely transformed our workflow. What used to take our team days now happens in minutes. The ROI was immediate and the platform continues to exceed our expectations every day.
           </blockquote>
 
           <div className="grid md:grid-cols-2 gap-6 mb-6">
             <div>
-              <div className="text-4xl font-bold text-gradient mb-2">25%</div>
+              <div className="text-4xl font-bold text-gradient mb-2">90%</div>
               <p className="text-muted-foreground text-sm">
-                reduction in time spent on manual calculations and paperwork
+                reduction in time spent on repetitive tasks
               </p>
             </div>
             <div>
-              <div className="text-4xl font-bold text-gradient mb-2">40%</div>
+              <div className="text-4xl font-bold text-gradient mb-2">10K+</div>
               <p className="text-muted-foreground text-sm">
-                improvement in payment processing
+                AI-generated images created monthly
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-4 pt-6 border-t">
             <div className="h-14 w-14 rounded-full bg-muted flex items-center justify-center font-semibold text-lg">
-              BR
+              SM
             </div>
             <div>
-              <div className="font-semibold">Brian Renner</div>
-              <div className="text-sm text-muted-foreground">Brian Renner, Founder</div>
-              <div className="text-xs text-muted-foreground">MaidManage</div>
+              <div className="font-semibold">Sarah Mitchell</div>
+              <div className="text-sm text-muted-foreground">Director of Operations</div>
+              <div className="text-xs text-muted-foreground">SmartContent Pro</div>
             </div>
           </div>
         </Card>

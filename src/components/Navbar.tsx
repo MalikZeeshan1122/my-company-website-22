@@ -20,8 +20,8 @@ export const Navbar = () => {
             <a href="#services" className="text-foreground/80 hover:text-foreground transition-colors">
               Services
             </a>
-            <a href="#work" className="text-foreground/80 hover:text-foreground transition-colors">
-              Work
+            <a href="/case-studies" className="text-foreground/80 hover:text-foreground transition-colors">
+              Case Studies
             </a>
             <a href="/about" className="text-foreground/80 hover:text-foreground transition-colors">
               About
@@ -54,11 +54,11 @@ export const Navbar = () => {
               Services
             </a>
             <a
-              href="#work"
+              href="/case-studies"
               className="block text-foreground/80 hover:text-foreground transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
-              Work
+              Case Studies
             </a>
             <a
               href="/about"

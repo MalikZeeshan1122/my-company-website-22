@@ -8,7 +8,7 @@ import { useParallax } from "@/hooks/useParallax";
 
 export const Hero = () => {
   const [isMuted, setIsMuted] = useState(true);
-  const useVideo = false; // Default: use image background
+  const useVideo = true; // Enable video background
   const parallaxIntensity = 0.5; // Default parallax intensity
   const parallaxOffset = useParallax(parallaxIntensity);
   const { ref: statsRef, isVisible: statsVisible } = useScrollReveal({ threshold: 0.3 });
@@ -54,24 +54,28 @@ export const Hero = () => {
             }}
           />
         )}
-        <div className="absolute inset-0 bg-gradient-to-b from-background/95 via-background/90 to-background"></div>
+        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/70 to-background"></div>
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,transparent_0%,hsl(var(--background))_100%)]"></div>
       </div>
 
       {/* Content */}
       <div className="container mx-auto px-4 relative z-10 pt-20">
         <div className="max-w-4xl mx-auto text-center animate-slide-up">
-          <h1 className="text-5xl md:text-7xl font-bold mb-6 leading-tight">
+          <div className="inline-block mb-6 px-4 py-2 rounded-full bg-primary/10 backdrop-blur-sm border border-primary/20">
+            <span className="text-sm font-semibold text-primary">✨ Award-Winning Digital Agency</span>
+          </div>
+          <h1 className="text-6xl md:text-8xl font-bold mb-8 leading-tight tracking-tight">
             Transform Your Ideas
             <br />
-            <span className="text-gradient">Into Reality</span>
+            <span className="text-gradient drop-shadow-[0_0_30px_hsl(var(--primary)/0.3)]">Into Reality</span>
           </h1>
-          <p className="text-xl md:text-2xl text-muted-foreground mb-8 max-w-2xl mx-auto">
+          <p className="text-xl md:text-2xl text-foreground/80 mb-10 max-w-2xl mx-auto leading-relaxed">
             We build cutting-edge digital solutions that help businesses scale. From web apps to mobile experiences, we turn your vision into reality.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Button 
               size="lg" 
-              className="bg-primary hover:bg-primary/90 text-lg px-8"
+              className="bg-gradient-to-r from-primary to-primary/80 hover:from-primary/90 hover:to-primary/70 text-lg px-10 py-6 h-auto shadow-[0_0_30px_hsl(var(--primary)/0.3)] hover:shadow-[0_0_40px_hsl(var(--primary)/0.5)] transition-all duration-300"
               onClick={(e) => {
                 e.preventDefault();
                 document.getElementById('contact')?.scrollIntoView({ behavior: 'smooth' });
@@ -83,7 +87,7 @@ export const Hero = () => {
             <Button 
               size="lg" 
               variant="outline" 
-              className="text-lg px-8"
+              className="text-lg px-10 py-6 h-auto backdrop-blur-sm bg-background/50 border-2 hover:bg-background/80 transition-all duration-300"
               onClick={(e) => {
                 e.preventDefault();
                 document.getElementById('work')?.scrollIntoView({ behavior: 'smooth' });
@@ -95,22 +99,22 @@ export const Hero = () => {
         </div>
 
         {/* Stats */}
-        <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-20 max-w-4xl mx-auto">
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">{projectsCount}+</div>
-            <div className="text-muted-foreground">Projects Delivered</div>
+        <div ref={statsRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-24 max-w-5xl mx-auto">
+          <div className="text-center p-6 rounded-2xl backdrop-blur-md bg-background/30 border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:scale-105">
+            <div className="text-5xl md:text-6xl font-bold text-gradient mb-3 drop-shadow-[0_0_20px_hsl(var(--primary)/0.3)]">{projectsCount}+</div>
+            <div className="text-foreground/70 font-medium">Projects Delivered</div>
           </div>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">{satisfactionCount}%</div>
-            <div className="text-muted-foreground">Client Satisfaction</div>
+          <div className="text-center p-6 rounded-2xl backdrop-blur-md bg-background/30 border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:scale-105">
+            <div className="text-5xl md:text-6xl font-bold text-gradient mb-3 drop-shadow-[0_0_20px_hsl(var(--primary)/0.3)]">{satisfactionCount}%</div>
+            <div className="text-foreground/70 font-medium">Client Satisfaction</div>
           </div>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">{teamCount}+</div>
-            <div className="text-muted-foreground">Team Members</div>
+          <div className="text-center p-6 rounded-2xl backdrop-blur-md bg-background/30 border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:scale-105">
+            <div className="text-5xl md:text-6xl font-bold text-gradient mb-3 drop-shadow-[0_0_20px_hsl(var(--primary)/0.3)]">{teamCount}+</div>
+            <div className="text-foreground/70 font-medium">Team Members</div>
           </div>
-          <div className="text-center">
-            <div className="text-4xl md:text-5xl font-bold text-gradient mb-2">{yearsCount}+</div>
-            <div className="text-muted-foreground">Years Experience</div>
+          <div className="text-center p-6 rounded-2xl backdrop-blur-md bg-background/30 border border-primary/10 hover:border-primary/30 transition-all duration-300 hover:scale-105">
+            <div className="text-5xl md:text-6xl font-bold text-gradient mb-3 drop-shadow-[0_0_20px_hsl(var(--primary)/0.3)]">{yearsCount}+</div>
+            <div className="text-foreground/70 font-medium">Years Experience</div>
           </div>
         </div>
       </div>
